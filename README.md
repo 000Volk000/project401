@@ -1,7 +1,7 @@
 # SprintCode
 
 <div align="center">
-    <img width="200" src="/docs/images/sprintcode.jpg" alt="SprintCode-Logo">
+    <img width="200" src="/docs/images/sprintcode.jpeg" alt="SprintCode-Logo">
 </div>
 
 <div align="center">
