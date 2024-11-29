@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DestinosController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [DestinosController::class, "index"]);
