@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="<?php echo e(str_replace('_', '-', app()->getLocale())); ?>">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,16 +27,17 @@
     </tr>
   </thead>
   <tbody>
-  @foreach($destinos as $destino)
+  <?php $__currentLoopData = $destinos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $destino): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
       <tr>
-          <td>{{$destino->nombreCiudad}}</td>
-          <td>{{$destino->nombreAsignatura}}</td>
-          <td>{{$destino->nombreUniversidad}}</td>
-          <td>{{$destino->especialidad}}</td>
-          <td><button class="btn btn-danger"><a href="/delete/{{$destino->id}}" style="text-decoration: none; color: white;">Eliminar</a></button></td>
+          <td><?php echo e($destino->nombreCiudad); ?></td>
+          <td><?php echo e($destino->nombreAsignatura); ?></td>
+          <td><?php echo e($destino->nombreUniversidad); ?></td>
+          <td><?php echo e($destino->especialidad); ?></td>
+          <td><button class="btn btn-danger"><a href="/delete/<?php echo e($destino->id); ?>" style="text-decoration: none; color: white;">Eliminar</a></button></td>
       </tr>
-  @endforeach
+  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
   </tbody>
 </table>
     </body>
 </html>
+<?php /**PATH C:\xampp\htdocs\laravel\sprintcode\resources\views/welcome.blade.php ENDPATH**/ ?>
