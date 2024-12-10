@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="<?php echo e(str_replace('_', '-', app()->getLocale())); ?>">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,9 +16,9 @@
 </head>
 <body>
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top ">
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm ">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img src="https://i.ibb.co/gWWr6tN/image-removebg-preview.png" width="70px"></a>
+        <a class="navbar-brand" href="/"><img src="https://i.ibb.co/gWWr6tN/image-removebg-preview.png" width="70px"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -38,61 +38,46 @@
                 </li>
             </ul>
             <ul class="navbar-nav ms-auto">
-                @auth
+                <?php if(auth()->guard()->check()): ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Bienvenido, {{ Auth::user()->name }}</a>
+                        <a class="nav-link" href="#">Bienvenido, <?php echo e(Auth::user()->name); ?></a>
                     </li>
                     <li class="nav-item">
-                        <form action="{{ route('logout') }}" method="POST" style="display: inline;">
-                            @csrf
+                        <form action="<?php echo e(route('logout')); ?>" method="POST" style="display: inline;">
+                            <?php echo csrf_field(); ?>
                             <button type="submit" class="btn btn-link nav-link" style="text-decoration: none;">Logout</button>
                         </form>
                     </li>
-                @else
+                <?php else: ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">Login</a>
+                        <a class="nav-link" href="<?php echo e(route('login')); ?>">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('register') }}">Register</a>
+                        <a class="nav-link" href="<?php echo e(route('register')); ?>">Register</a>
                     </li>
-                @endauth
+                <?php endif; ?>
             </ul>
         </div>
     </div>
 </nav>
 
-<div class="container-fluid mt-5">
-    <h1>Destinos Universidades</h1>
+<div class="container-fluid mt-10">
     <table class="table">
         <thead>
         <tr>
-            <th scope="col">Ciudad</th>
-            <th scope="col">Universidad</th>
-            <th scope="col">Especialidad</th>
-            <th scope="col"></th>
-            <th scope="col"></th>
+            <th scope="col">Asignaturas <?php echo e($universidad->nombreUniversidad); ?></th>
         </tr>
         </thead>
         <tbody>
-        @foreach($destinos as $destino)
+        <?php $__currentLoopData = $asignaturas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $asignatura): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <tr>
-                <td>{{$destino->nombreCiudad}}</td>
-                <td>{{$destino->nombreUniversidad}}</td>
-                <td>{{$destino->especialidad}}</td>
-                <td><button class="btn btn-primary">
-                        <a href="/asignaturas/{{$destino->id}}" style="text-decoration: none; color: white;">Ver asignaturas</a>
-                    </button>
-                </td>
-                <td>
-                    <button class="btn btn-danger">
-                        <a href="/delete/{{$destino->id}}" style="text-decoration: none; color: white;">Eliminar</a>
-                    </button>
-                </td>
+                <td><?php echo e($asignatura->nombre); ?></td>
             </tr>
-        @endforeach
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </tbody>
     </table>
 </div>
 </body>
 </html>
 
+<?php /**PATH C:\xampp\htdocs\laravel\sprintcode\resources\views/asignatura.blade.php ENDPATH**/ ?>

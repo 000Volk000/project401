@@ -16,9 +16,9 @@
 </head>
 <body>
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top ">
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm ">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img src="https://i.ibb.co/gWWr6tN/image-removebg-preview.png" width="70px"></a>
+        <a class="navbar-brand" href="/"><img src="https://i.ibb.co/gWWr6tN/image-removebg-preview.png" width="70px"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -61,33 +61,17 @@
     </div>
 </nav>
 
-<div class="container-fluid mt-5">
-    <h1>Destinos Universidades</h1>
+<div class="container-fluid mt-10">
     <table class="table">
         <thead>
         <tr>
-            <th scope="col">Ciudad</th>
-            <th scope="col">Universidad</th>
-            <th scope="col">Especialidad</th>
-            <th scope="col"></th>
-            <th scope="col"></th>
+            <th scope="col">Asignaturas {{$universidad->nombreUniversidad}}</th>
         </tr>
         </thead>
         <tbody>
-        @foreach($destinos as $destino)
+        @foreach($asignaturas as $asignatura)
             <tr>
-                <td>{{$destino->nombreCiudad}}</td>
-                <td>{{$destino->nombreUniversidad}}</td>
-                <td>{{$destino->especialidad}}</td>
-                <td><button class="btn btn-primary">
-                        <a href="/asignaturas/{{$destino->id}}" style="text-decoration: none; color: white;">Ver asignaturas</a>
-                    </button>
-                </td>
-                <td>
-                    <button class="btn btn-danger">
-                        <a href="/delete/{{$destino->id}}" style="text-decoration: none; color: white;">Eliminar</a>
-                    </button>
-                </td>
+                <td>{{$asignatura->nombre}}</td>
             </tr>
         @endforeach
         </tbody>

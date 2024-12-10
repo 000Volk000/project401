@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfesorController;
+use App\Http\Controllers\AsignaturaController;
 
 
     Route::get('/', [DestinosController::class, "index"])->name('destinos.admin');//>middleware(\App\Http\Middleware\CheckAdminRole::class);
@@ -16,6 +17,7 @@ use App\Http\Controllers\ProfesorController;
     Route::get('/delete/{id}', [DestinosController::class, "delete"]);
     Route::get('/profesor', [ProfesorController::class, "index"])->name('profesor');
     Route::get('/estudiante', [EstudianteController::class, "index"])->name('estudiante');
+    Route::get('/asignaturas/{id}', [AsignaturaController::class, "index"])->name('asignatura');
 
 
 Route::get('/dashboard', function () {

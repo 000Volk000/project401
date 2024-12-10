@@ -11,13 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
-        Schema::create('destinos', function (Blueprint $table) {
+        Schema::create('asignaturas', function (Blueprint $table) {
             $table->id();
-            $table->string('nombreCiudad');
-            $table->string('nombreUniversidad');
-            $table->string('especialidad');
+            $table->string('nombre');
+            $table->unsignedBigInteger('idCiudad'); // Add the idCiudad column
             $table->timestamps();
+
+            // Set idCiudad as a foreign key referencing destinos.id
+            $table->foreign('idCiudad')->references('id')->on('destinos')->onDelete('cascade');
         });
     }
 
@@ -26,7 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
-        Schema::dropIfExists('destinos');
+        Schema::dropIfExists('asignaturas');
     }
 };

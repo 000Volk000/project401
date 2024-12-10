@@ -67,18 +67,22 @@
         <thead>
         <tr>
             <th scope="col">Ciudad</th>
-            <th scope="col">Asignatura</th>
             <th scope="col">Universidad</th>
             <th scope="col">Especialidad</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
         </tr>
         </thead>
         <tbody>
         <?php $__currentLoopData = $destinos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $destino): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <tr>
                 <td><?php echo e($destino->nombreCiudad); ?></td>
-                <td><?php echo e($destino->nombreAsignatura); ?></td>
                 <td><?php echo e($destino->nombreUniversidad); ?></td>
                 <td><?php echo e($destino->especialidad); ?></td>
+                <td><button class="btn btn-primary">
+                        <a href="/asignaturas/<?php echo e($destino->id); ?>" style="text-decoration: none; color: white;">Ver asignaturas</a>
+                    </button>
+                </td>
                 <td>
                     <button class="btn btn-danger">
                         <a href="/delete/<?php echo e($destino->id); ?>" style="text-decoration: none; color: white;">Eliminar</a>
