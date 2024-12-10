@@ -28,7 +28,22 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(route('dashboard', absolute: false));
+        if (auth()->check()) {
+            if (auth()->user()->rol === 'admin') {
+                return redirect()->route('destinos.admin');
+            }
+
+            if (auth()->user()->rol === 'estudiante') {
+                return redirect()->route('estudiante');
+            }
+
+            if (auth()->user()->rol === 'profesor') {
+                return redirect()->route('profesor');
+            }
+        }
+
+
+
     }
 
     /**
@@ -42,6 +57,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('/login');
     }
 }

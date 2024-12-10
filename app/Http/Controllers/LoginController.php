@@ -21,7 +21,16 @@ class LoginController extends Controller
 
         if (Auth::attempt($request->only('email', 'password'))) {
             $request->session()->regenerate();
-            return redirect()->intended('/dashboard'); // Change this to your desired route
+            if(\auth()->user()->rol === 'admin') {
+                return redirect()->intended('destinos.admin');
+            }
+            if(\auth()->user()->rol === 'estudiante') {
+                return redirect()->intended('estudiante');
+            }
+            if(\auth()->user()->rol === 'profesor') {
+                return redirect()->intended('profesor');
+            }
+
         }
 
         return back()->withErrors([
@@ -36,7 +45,7 @@ class LoginController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('/login');
     }
 }
 

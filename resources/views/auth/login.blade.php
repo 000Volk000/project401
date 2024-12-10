@@ -5,6 +5,20 @@
 
 <div class="container">
     <div class="heading">Sign In</div>
+
+    <!-- Display Validation Errors at the Top -->
+    @if ($errors->has('email'))
+        <div class="alert alert-danger">
+            {{ $errors->first('email') }}
+        </div>
+    @endif
+
+    @if ($errors->has('password'))
+        <div class="alert alert-danger">
+            {{ $errors->first('password') }}
+        </div>
+    @endif
+
     <form method="POST" class="form" {{ route('login') }}">
         @csrf
         <input required="" class="input" type="email" name="email" id="email" placeholder="E-mail">

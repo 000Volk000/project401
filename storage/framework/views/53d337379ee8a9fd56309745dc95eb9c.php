@@ -24,6 +24,22 @@
 
 <div class="container">
     <div class="heading">Sign In</div>
+
+    <!-- Display Validation Errors at the Top -->
+    <?php if($errors->has('email')): ?>
+        <div class="alert alert-danger">
+            <?php echo e($errors->first('email')); ?>
+
+        </div>
+    <?php endif; ?>
+
+    <?php if($errors->has('password')): ?>
+        <div class="alert alert-danger">
+            <?php echo e($errors->first('password')); ?>
+
+        </div>
+    <?php endif; ?>
+
     <form method="POST" class="form" <?php echo e(route('login')); ?>">
         <?php echo csrf_field(); ?>
         <input required="" class="input" type="email" name="email" id="email" placeholder="E-mail">
