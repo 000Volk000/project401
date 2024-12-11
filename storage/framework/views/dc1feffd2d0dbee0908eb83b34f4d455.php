@@ -69,7 +69,11 @@
             <th scope="col">Ciudad</th>
             <th scope="col">Universidad</th>
             <th scope="col">Especialidad</th>
-            <th scope="col"></th>
+            <th scope="col">
+                <button class="btn btn-primary">
+                    <a href="/asignaturas/" style="text-decoration: none; color: white;">Gestionar Asignaturas</a>
+                </button>
+            </th>
             <th scope="col"></th>
         </tr>
         </thead>

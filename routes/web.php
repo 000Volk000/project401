@@ -17,8 +17,8 @@ use App\Http\Controllers\AsignaturaController;
     Route::get('/delete/{id}', [DestinosController::class, "delete"]);
     Route::get('/profesor', [ProfesorController::class, "index"])->name('profesor');
     Route::get('/estudiante', [EstudianteController::class, "index"])->name('estudiante');
-    Route::get('/asignaturas/{id}', [AsignaturaController::class, "index"])->name('asignatura');
-
+    Route::get('/asignaturas/{id}', [AsignaturaController::class, "searchByCity"])->name('asignatura');
+    Route::resource('asignaturas', AsignaturaController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
