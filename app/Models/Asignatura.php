@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
 /**
  * Class Asignatura
@@ -19,7 +21,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Asignatura extends Model
 {
-    
+    /** @use HasFactory<\Database\Factories\AsignaturaFactory> */
+    use HasFactory, Notifiable;
     protected $perPage = 20;
 
     /**
@@ -37,5 +40,5 @@ class Asignatura extends Model
     {
         return $this->belongsTo(\App\Models\Destino::class, 'idCiudad', 'id');
     }
-    
+
 }

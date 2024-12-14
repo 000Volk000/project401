@@ -6,7 +6,6 @@ use App\Models\Destino;
 use App\Models\User;
 use App\Models\Asignatura;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Database\Factories\AsignaturaFactory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
