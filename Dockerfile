@@ -19,7 +19,7 @@ RUN apt-get update && apt-get install -y \
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install PHP extensions
-RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
+RUN docker-php-ext-install pdo_pgsql pdo_mysql mbstring exif pcntl bcmath gd  # Include pdo_pgsql for PostgreSQL
 
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -38,14 +38,8 @@ RUN chown -R www-data:www-data /var/www \
 # Install Laravel dependencies
 RUN composer install --optimize-autoloader --no-dev
 
-# Set up the environment file
-# RUN cp .env.example.deployment .env
-
 # Generate the application key
 RUN php artisan key:generate
-
-# Run migrations and seed the database
-RUN php artisan migrate --force && php artisan db:seed --force
 
 # Expose port 8000
 EXPOSE 8000
