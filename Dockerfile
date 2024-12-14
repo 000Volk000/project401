@@ -39,7 +39,7 @@ RUN chown -R www-data:www-data /var/www \
 RUN composer install --optimize-autoloader --no-dev
 
 # Set up the environment file
-RUN cp .env.example .env
+RUN cp .env.example.deployment .env
 
 # Generate the application key
 RUN php artisan key:generate
