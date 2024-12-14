@@ -42,6 +42,12 @@ RUN composer install --optimize-autoloader --no-dev
 # Generate the application key
 RUN php artisan key:generate
 
+# Run database migrations
+RUN php artisan migrate
+
+# Run database seeders
+RUN php artisan db:seed
+
 # Expose port 8000
 EXPOSE 8000
 
