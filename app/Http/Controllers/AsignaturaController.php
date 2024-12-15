@@ -76,12 +76,26 @@ class AsignaturaController extends Controller
             ->with('success', 'Asignatura updated successfully');
     }
 
-    public function searchByCity($id){
-        $asignaturas = DB::table('asignaturas')->where('idCiudad', $id)->get();
-        $universidad = DB::table('destinos')->where('id', $id)->get()->first();
-        return view('asignatura', ['asignaturas' => $asignaturas, 'universidad' => $universidad]);
-
+    public function searchByCity($id)
+    {
+        // Ensure that $id is an integer
+        $id = (int) $id;
+    
+        // Now execute the query
+        $asignaturas = DB::table('asignaturas')
+            ->where('idCiudad', $id)
+            ->get();
+    
+        $universidad = DB::table('destinos')
+            ->where('id', $id)
+            ->first();
+    
+        return view('asignatura', [
+            'asignaturas' => $asignaturas,
+            'universidad' => $universidad
+        ]);
     }
+    
 
     public function destroy($id): RedirectResponse
     {
