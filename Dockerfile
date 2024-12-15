@@ -42,6 +42,11 @@ RUN composer install --optimize-autoloader
 # Copy the .env.deployment file to .env
 # COPY .env.deployment .env
 
+#Cleaning cache config
+RUN php artisan config:cache
+RUN php artisan route:cache
+RUN php artisan view:cache
+
 # Generate the application key
 RUN php artisan key:generate
 
