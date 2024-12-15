@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="{{ asset('css/register.css') }}" type="text/css">
+<link rel="stylesheet" href="../../css/register.css" type="text/css">
 
 <!-- Session Status -->
 <x-auth-session-status class="mb-4" :status="session('status')" />
