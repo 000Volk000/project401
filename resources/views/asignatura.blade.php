@@ -65,7 +65,7 @@
     <table class="table">
         <thead>
         <tr>
-            <th scope="col">Asignaturas {{$universidad->nombreUniversidad}}</th>
+            <th scope="col">Asignaturas {{$destino->nombreUniversidad}}</th>
         </tr>
         </thead>
         <tbody>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="<?php echo e(str_replace('_', '-', app()->getLocale())); ?>">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,14 +22,15 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">{{ __('Update') }} Asignatura</span>
+                        <span class="card-title"><?php echo e(__('Update')); ?> Asignatura</span>
                     </div>
                     <div class="card-body bg-white">
-                        <form method="POST" action="{{ route('asignaturas.update', $asignatura->id) }}"  role="form" enctype="multipart/form-data">
-                            {{ method_field('PATCH') }}
-                            @csrf
+                        <form method="POST" action="<?php echo e(route('asignaturas.update', $asignatura->id)); ?>"  role="form" enctype="multipart/form-data">
+                            <?php echo e(method_field('PATCH')); ?>
 
-                            @include('asignatura.form')
+                            <?php echo csrf_field(); ?>
+
+                            <?php echo $__env->make('asignatura.form', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
                         </form>
                     </div>
@@ -40,3 +41,4 @@
 </body>
 </html>
 
+<?php /**PATH C:\xampp\htdocs\laravel\sprintcode\resources\views/asignatura/edit.blade.php ENDPATH**/ ?>

@@ -65,7 +65,7 @@
     <table class="table">
         <thead>
         <tr>
-            <th scope="col">Asignaturas <?php echo e($universidad->nombreUniversidad); ?></th>
+            <th scope="col">Asignaturas <?php echo e($destino->nombreUniversidad); ?></th>
         </tr>
         </thead>
         <tbody>

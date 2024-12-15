@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="<?php echo e(str_replace('_', '-', app()->getLocale())); ?>">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,21 +15,19 @@
 
 </head>
 <body>
-
-    <section class="content container-fluid">
+    <section class="content container-fluid ">
         <div class="row justify-content-center align-items-center d-flex vh-100">
-            <div class="col-md-7">
+            <div class="col-md-6">
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">{{ __('Update') }} Asignatura</span>
+                        <span class="card-title"><?php echo e(__('Crear')); ?> Asignatura</span>
                     </div>
                     <div class="card-body bg-white">
-                        <form method="POST" action="{{ route('asignaturas.update', $asignatura->id) }}"  role="form" enctype="multipart/form-data">
-                            {{ method_field('PATCH') }}
-                            @csrf
+                        <form method="POST" action="<?php echo e(route('asignaturas.store')); ?>"  role="form" enctype="multipart/form-data">
+                            <?php echo csrf_field(); ?>
 
-                            @include('asignatura.form')
+                            <?php echo $__env->make('asignatura.form', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
                         </form>
                     </div>
@@ -37,6 +35,7 @@
             </div>
         </div>
     </section>
-</body>
-</html>
 
+
+</body>
+</html><?php /**PATH C:\xampp\htdocs\laravel\sprintcode\resources\views/asignatura/create.blade.php ENDPATH**/ ?>

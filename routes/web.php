@@ -17,8 +17,16 @@ use App\Http\Controllers\AsignaturaController;
     Route::get('/delete/{id}', [DestinosController::class, "delete"]);
     Route::get('/profesor', [ProfesorController::class, "index"])->name('profesor');
     Route::get('/estudiante', [EstudianteController::class, "index"])->name('estudiante');
+    //Route::resource('asignaturas', AsignaturaController::class);
+
+    Route::get('/asignaturas', [AsignaturaController::class, "index"])->name('asignaturas.index');
+    Route::get('/asignaturas/create', [AsignaturaController::class, "create"])->name('asignaturas.create');
+    Route::post('/asignaturas/store', [AsignaturaController::class, "store"])->name('asignaturas.store');
     Route::get('/asignaturas/{id}', [AsignaturaController::class, "searchByCity"])->name('asignatura');
-    Route::resource('asignaturas', AsignaturaController::class);
+    Route::get('/asignaturas/{id}/edit', [AsignaturaController::class, "edit"])->name('asignaturas.edit');
+    Route::patch('/asignaturas/{id}', [AsignaturaController::class, "update"])->name('asignaturas.update');
+    Route::delete('/asignaturas/{id}', [AsignaturaController::class, "destroy"])->name('asignaturas.destroy');
+    //Route::get('/asignaturas/create', [AsignaturaController::class, "create"])->name('asignaturas.create');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

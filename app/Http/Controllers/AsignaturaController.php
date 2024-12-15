@@ -9,6 +9,7 @@ use App\Http\Requests\AsignaturaRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use function Laravel\Prompts\table;
 
 class AsignaturaController extends Controller
 {
@@ -70,32 +71,18 @@ class AsignaturaController extends Controller
      */
     public function update(AsignaturaRequest $request, Asignatura $asignatura): RedirectResponse
     {
-        $asignatura->update($request->validated());
+       Asignatura::find($request->id)->update($request->validated());
 
         return Redirect::route('asignaturas.index')
             ->with('success', 'Asignatura updated successfully');
     }
 
-    public function searchByCity($id)
-    {
-        // Ensure that $id is an integer
-        $id = (int) $id;
-    
-        // Now execute the query
-        $asignaturas = DB::table('asignaturas')
-            ->where('idCiudad', $id)
-            ->get();
-    
-        $universidad = DB::table('destinos')
-            ->where('id', $id)
-            ->first();
-    
-        return view('asignatura', [
-            'asignaturas' => $asignaturas,
-            'universidad' => $universidad
-        ]);
+    public function searchByCity($id){
+        $asignaturas = DB::table('asignaturas')->where('idCiudad', $id)->get();
+        $destino = DB::table('destinos')->where('id', $id)->get()->first();
+        return view('asignatura', ['asignaturas' => $asignaturas, 'destino' => $destino]);
+
     }
-    
 
     public function destroy($id): RedirectResponse
     {
