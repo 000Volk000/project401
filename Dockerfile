@@ -39,11 +39,14 @@ RUN chown -R www-data:www-data /var/www \
 # Install Laravel dependencies
 RUN composer install --optimize-autoloader
 
+# Copy the .env.deployment file to .env
+# COPY .env.deployment .env
+
 # Generate the application key
 RUN php artisan key:generate
 
 # Run database migrations
-RUN php artisan migrate
+RUN php artisan migrate:refresh
 
 # Run database seeders
 RUN php artisan db:seed
