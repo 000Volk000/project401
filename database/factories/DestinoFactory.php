@@ -17,7 +17,8 @@ class DestinoFactory extends Factory
     public function definition(): array
     {
         $asignaturas = ['Estructura de Datos', 'Introducción a la Programación', 'Física', 'Cálculo', 'Álgebra'];
-        $ciudad = $this->faker->city();
+        $ListaCiudades = ['Madrid', 'Barcelona', 'Valencia', 'Sevilla', 'Granada', 'Zaragoza', 'Bilbao', 'Málaga', 'Valladolid', 'Salamanca', 'Alicante', 'Córdoba', 'Oviedo', 'Santander', 'Murcia', 'Burgos', 'León', 'Santiago de Compostela', 'Pamplona', 'San Sebastián'];
+        $ciudad=$this->faker->randomElement($ListaCiudades);
         return [
             //
             'nombreCiudad' => $ciudad,

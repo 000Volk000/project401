@@ -40,4 +40,4 @@
 </table>
     </body>
 </html>
-<?php /**PATH C:\xampp\htdocs\laravel\sprintcode\resources\views/welcome.blade.php ENDPATH**/ ?>
+<?php /**PATH /opt/lampp/htdocs/sprintcode/resources/views/welcome.blade.php ENDPATH**/ ?>
