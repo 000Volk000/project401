@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="<?php echo e(str_replace('_', '-', app()->getLocale())); ?>">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,22 +21,22 @@
         </tr>
         </thead>
         <tbody>
-        @foreach($solicitudes as $solicitud)
+        <?php $__currentLoopData = $solicitudes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $solicitud): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <tr>
                 <!-- Mostrar el correo del usuario -->
-                <td>{{ $solicitud->user->email }}</td>
+                <td><?php echo e($solicitud->user->email); ?></td>
 
                 <!-- Mostrar la ciudad y universidad del destino -->
-                <td>{{ $solicitud->destino->nombreCiudad }}</td>
-                <td>{{ $solicitud->destino->nombreUniversidad }}</td>
+                <td><?php echo e($solicitud->destino->nombreCiudad); ?></td>
+                <td><?php echo e($solicitud->destino->nombreUniversidad); ?></td>
 
                 <!-- Mostrar el orden de preferencia -->
-                <td>{{ $solicitud->preference_order }}</td>
+                <td><?php echo e($solicitud->preference_order); ?></td>
 
                 <!-- Mostrar el estado de la solicitud -->
-                <td>{{ $solicitud->status }}</td>
+                <td><?php echo e($solicitud->status); ?></td>
             </tr>
-        @endforeach
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </tbody>
     </table>
 </div>
@@ -45,3 +45,4 @@
 
 </body>
 </html>
+<?php /**PATH C:\xampp\htdocs\laravel\sprintcode\resources\views/aprobadas.blade.php ENDPATH**/ ?>

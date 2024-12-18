@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="<?php echo e(str_replace('_', '-', app()->getLocale())); ?>">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -49,7 +49,7 @@
                 </li>
             </ul>
             <ul class="navbar-nav ms-auto">
-                @auth
+                <?php if(auth()->guard()->check()): ?>
                     <li class="nav-item">
                         <button class="btn btn-success" id="nuevaSolicitudBtn">
                             Nueva solicitud
@@ -59,22 +59,22 @@
                         </button>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Bienvenido, {{ Auth::user()->name }}</a>
+                        <a class="nav-link" href="#">Bienvenido, <?php echo e(Auth::user()->name); ?></a>
                     </li>
                     <li class="nav-item">
-                        <form action="{{ route('logout') }}" method="POST" style="display: inline;">
-                            @csrf
+                        <form action="<?php echo e(route('logout')); ?>" method="POST" style="display: inline;">
+                            <?php echo csrf_field(); ?>
                             <button type="submit" class="btn btn-link nav-link" style="text-decoration: none;">Logout</button>
                         </form>
                     </li>
-                @else
+                <?php else: ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">Login</a>
+                        <a class="nav-link" href="<?php echo e(route('login')); ?>">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('register') }}">Register</a>
+                        <a class="nav-link" href="<?php echo e(route('register')); ?>">Register</a>
                     </li>
-                @endauth
+                <?php endif; ?>
             </ul>
         </div>
     </div>
@@ -93,54 +93,55 @@
         </tr>
         </thead>
         <tbody>
-        @foreach($destinos as $destino)
+        <?php $__currentLoopData = $destinos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $destino): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <tr>
-                <td>{{ $destino->nombreCiudad }}</td>
-                <td>{{ $destino->nombreUniversidad }}</td>
-                <td>{{ $destino->especialidad }}</td>
+                <td><?php echo e($destino->nombreCiudad); ?></td>
+                <td><?php echo e($destino->nombreUniversidad); ?></td>
+                <td><?php echo e($destino->especialidad); ?></td>
                 <td>
                     <button class="btn btn-primary">
-                        <a href="/asignaturas/{{ $destino->id }}" style="text-decoration: none; color: white;">
+                        <a href="/asignaturas/<?php echo e($destino->id); ?>" style="text-decoration: none; color: white;">
                             Ver asignaturas
                         </a>
                     </button>
                 </td>
                 <td>
                     <!-- Check if the destination has been requested -->
-                    @if(isset($destino->solicitud_status)) <!-- If the user has requested this destination -->
+                    <?php if(isset($destino->solicitud_status)): ?> <!-- If the user has requested this destination -->
                     <button class="btn btn-success" disabled>
-                        Destino seleccionado (Status: {{ $destino->solicitud_status }})
+                        Destino seleccionado (Status: <?php echo e($destino->solicitud_status); ?>)
                     </button>
                     <!-- Show cancel button if the destination has been selected -->
-                    @if($destino->solicitud_status == 'pendiente')
-                        <form action="{{ route('solicitudes.cancelar', $destino->id) }}" method="POST" style="display:inline;">
-                            @csrf
+                    <?php if($destino->solicitud_status == 'pendiente'): ?>
+                        <form action="<?php echo e(route('solicitudes.cancelar', $destino->id)); ?>" method="POST" style="display:inline;">
+                            <?php echo csrf_field(); ?>
                             <button type="submit" class="btn btn-danger">
                                 Cancelar destino
                             </button>
                         </form>
-                    @endif
+                    <?php endif; ?>
 
                     <!-- Show renovar button if the status is canceled -->
-                    @if($destino->solicitud_status == 'cancelado')
-                        <form action="{{ route('solicitudes.renovar', $destino->id) }}" method="POST" style="display:inline;">
-                            @csrf
+                    <?php if($destino->solicitud_status == 'cancelado'): ?>
+                        <form action="<?php echo e(route('solicitudes.renovar', $destino->id)); ?>" method="POST" style="display:inline;">
+                            <?php echo csrf_field(); ?>
                             <button type="submit" class="btn btn-info">
                                 Renovar destino
                             </button>
                         </form>
-                    @endif
-                    @else <!-- If the destination has not been requested yet -->
-                    <button class="btn btn-warning solicitar-btn" data-id="{{ $destino->id }}">
+                    <?php endif; ?>
+                    <?php else: ?> <!-- If the destination has not been requested yet -->
+                    <button class="btn btn-warning solicitar-btn" data-id="<?php echo e($destino->id); ?>">
                         Solicitar destino
                     </button>
-                    @endif
-                    @if($destino->solicitud_status == "pendiente")
-                        Orden: {{$destino->preference_order}}
-                    @endif
+                    <?php endif; ?>
+                    <?php if($destino->solicitud_status == "pendiente"): ?>
+                        Orden: <?php echo e($destino->preference_order); ?>
+
+                    <?php endif; ?>
                 </td>
             </tr>
-        @endforeach
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </tbody>
     </table>
 </div>
@@ -180,3 +181,4 @@
 
 </body>
 </html>
+<?php /**PATH C:\xampp\htdocs\laravel\sprintcode\resources\views/estudiante.blade.php ENDPATH**/ ?>

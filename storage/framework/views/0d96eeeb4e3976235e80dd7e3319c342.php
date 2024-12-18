@@ -17,7 +17,7 @@
 <body>
     <section class="content container-fluid ">
         <div class="row justify-content-center align-items-center d-flex vh-100">
-            <div class="col-md-6">
+            <div class="col-md-7">
 
                 <div class="card card-default">
                     <div class="card-header">

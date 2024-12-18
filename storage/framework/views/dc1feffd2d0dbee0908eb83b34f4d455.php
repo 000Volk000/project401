@@ -74,6 +74,11 @@
                     <a href="/asignaturas/" style="text-decoration: none; color: white;">Gestionar Asignaturas</a>
                 </button>
             </th>
+            <th scope="col">
+                <button class="btn btn-warning">
+                    <a href="/solicitudes/" style="text-decoration: none; color: white;">Gestionar Solicitudes</a>
+                </button>
+            </th>
             <th scope="col"></th>
         </tr>
         </thead>
@@ -83,7 +88,7 @@
                 <td><?php echo e($destino->nombreCiudad); ?></td>
                 <td><?php echo e($destino->nombreUniversidad); ?></td>
                 <td><?php echo e($destino->especialidad); ?></td>
-                <td><button class="btn btn-primary">
+                <td><button class="btn btn-info">
                         <a href="/asignaturas/<?php echo e($destino->id); ?>" style="text-decoration: none; color: white;">Ver asignaturas</a>
                     </button>
                 </td>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Asignatura;
+use App\Models\Destino;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Requests\AsignaturaRequest;
@@ -31,8 +32,9 @@ class AsignaturaController extends Controller
     public function create(): View
     {
         $asignatura = new Asignatura();
+        $ciudades = Destino::all();
 
-        return view('asignatura.create', compact('asignatura'));
+        return view('asignatura.create', compact('ciudades', 'asignatura'));
     }
 
     /**

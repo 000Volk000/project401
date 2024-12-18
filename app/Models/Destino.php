@@ -17,4 +17,10 @@ class Destino extends Model
         'nombreUniversidad',
         'especialidad',
     ];
+
+    public function solicitudes()
+    {
+        return $this->hasMany(Solicitud::class, 'destino_id');
+    }
+
 }

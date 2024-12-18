@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="<?php echo e(str_replace('_', '-', app()->getLocale())); ?>">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,7 +20,7 @@
             <th scope="col">Estado de Solicitud</th>
             <th scope="col">
                 <button type="submit" class="btn btn-primary">
-                    <a href="{{ route('solicitudAprobadas') }}" style="text-decoration: none; color: white;">
+                    <a href="<?php echo e(route('solicitudAprobadas')); ?>" style="text-decoration: none; color: white;">
                         Mostrar Solicitudes Aprobadas
                     </a>
                 </button>
@@ -29,28 +29,28 @@
         </tr>
         </thead>
         <tbody>
-        @foreach($solicitudes as $solicitud)
+        <?php $__currentLoopData = $solicitudes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $solicitud): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <tr>
                 <!-- Mostrar el correo del usuario -->
-                <td>{{ $solicitud->user->email }}</td>
+                <td><?php echo e($solicitud->user->email); ?></td>
 
                 <!-- Mostrar la ciudad y universidad del destino -->
-                <td>{{ $solicitud->destino->nombreCiudad }}</td>
-                <td>{{ $solicitud->destino->nombreUniversidad }}</td>
+                <td><?php echo e($solicitud->destino->nombreCiudad); ?></td>
+                <td><?php echo e($solicitud->destino->nombreUniversidad); ?></td>
 
                 <!-- Mostrar el orden de preferencia -->
-                <td>{{ $solicitud->preference_order }}</td>
+                <td><?php echo e($solicitud->preference_order); ?></td>
 
-                <td>{{ $solicitud->status }}</td>
+                <td><?php echo e($solicitud->status); ?></td>
                 <td>
                     <!-- Acción para aprobar la solicitud -->
-                    <form action="{{ route('solicitudes.aprobar', $solicitud->id) }}" method="POST" style="display:inline;">
-                        @csrf
+                    <form action="<?php echo e(route('solicitudes.aprobar', $solicitud->id)); ?>" method="POST" style="display:inline;">
+                        <?php echo csrf_field(); ?>
                         <button type="submit" class="btn btn-success">Aprobar Solicitud</button>
                     </form>
                 </td>
             </tr>
-        @endforeach
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </tbody>
     </table>
 </div>
@@ -59,3 +59,4 @@
 
 </body>
 </html>
+<?php /**PATH C:\xampp\htdocs\laravel\sprintcode\resources\views/solicitud.blade.php ENDPATH**/ ?>
