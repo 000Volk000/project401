@@ -22,7 +22,6 @@ class DestinoFactory extends Factory
         return [
             //
             'nombreCiudad' => $ciudad,
-            'nombreAsignatura' => $this->faker->randomElement($asignaturas),
             'nombreUniversidad' => 'Universidad de ' . $ciudad,
             'especialidad' => $this->faker->name(),
         ];

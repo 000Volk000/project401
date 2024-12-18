@@ -6,6 +6,7 @@ use App\Models\Destino;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 
 class DestinosController extends Controller
 {
@@ -32,6 +33,8 @@ class DestinosController extends Controller
     public function delete($id){
         $destino = DB::table('destinos')->where('id', $id)->delete();
         $destinos = Destino::all();
-        return view('welcome', ['destinos' => $destinos]);
+
+        return Redirect::route('destinos.admin')
+            ->with('success', 'Destino deleted successfully');
     }
 }

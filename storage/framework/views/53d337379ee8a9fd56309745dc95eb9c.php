@@ -1,4 +1,6 @@
-<link rel="stylesheet" href="<?php echo e(asset('css/register.css')); ?>" type="text/css">
+<link rel="stylesheet" href="../../css/register.css" type="text/css">
+<title>SprintCode</title>
+<link rel="icon" href="https://i.ibb.co/gWWr6tN/image-removebg-preview.png" type="image/x-icon">
 
 <!-- Session Status -->
 <?php if (isset($component)) { $__componentOriginal7c1bf3a9346f208f66ee83b06b607fb5 = $component; } ?>
@@ -24,6 +26,22 @@
 
 <div class="container">
     <div class="heading">Sign In</div>
+
+    <!-- Display Validation Errors at the Top -->
+    <?php if($errors->has('email')): ?>
+        <div class="alert alert-danger">
+            <?php echo e($errors->first('email')); ?>
+
+        </div>
+    <?php endif; ?>
+
+    <?php if($errors->has('password')): ?>
+        <div class="alert alert-danger">
+            <?php echo e($errors->first('password')); ?>
+
+        </div>
+    <?php endif; ?>
+
     <form method="POST" class="form" <?php echo e(route('login')); ?>">
         <?php echo csrf_field(); ?>
         <input required="" class="input" type="email" name="email" id="email" placeholder="E-mail">

@@ -1,10 +1,26 @@
-<link rel="stylesheet" href="{{ asset('css/register.css') }}" type="text/css">
+<link rel="stylesheet" href="../../css/register.css" type="text/css">
+<title>SprintCode</title>
+<link rel="icon" href="https://i.ibb.co/gWWr6tN/image-removebg-preview.png" type="image/x-icon">
 
 <!-- Session Status -->
 <x-auth-session-status class="mb-4" :status="session('status')" />
 
 <div class="container">
     <div class="heading">Sign In</div>
+
+    <!-- Display Validation Errors at the Top -->
+    @if ($errors->has('email'))
+        <div class="alert alert-danger">
+            {{ $errors->first('email') }}
+        </div>
+    @endif
+
+    @if ($errors->has('password'))
+        <div class="alert alert-danger">
+            {{ $errors->first('password') }}
+        </div>
+    @endif
+
     <form method="POST" class="form" {{ route('login') }}">
         @csrf
         <input required="" class="input" type="email" name="email" id="email" placeholder="E-mail">
