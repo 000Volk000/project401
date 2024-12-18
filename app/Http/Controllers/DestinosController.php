@@ -25,6 +25,9 @@ class DestinosController extends Controller
     public function store(Request $request){
         $destino = new Destino($request);
         $destino->save();
+
+        return Redirect::route('destinos.admin')
+            ->with('success', 'Destino creado correctamente.');
     }
     public function edit($id){
         $destino = DB::table('destinos')->where('id', $id)->first();
