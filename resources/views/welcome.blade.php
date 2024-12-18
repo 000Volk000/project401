@@ -65,6 +65,11 @@
                         <a href="/delete/{{$destino->id}}" style="text-decoration: none; color: white;">Eliminar</a>
                     </button>
                 </td>
+                <td><button class="btn btn-secondary">
+                        <a href="/ModDest/{{$destino->id}}" style="text-decoration: none; color: white;">Modificar Destino</a>
+                    </button>
+                </td>
+                <td>
             </tr>
         @endforeach
         </tbody>

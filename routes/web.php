@@ -41,6 +41,8 @@ use App\Http\Controllers\AsignaturaController;
 
     Route::get('/createDest',[DestinosController::class, "create"]);
     Route::post('/storeDest',[DestinosController::class, "store"]);
+    Route::get('/ModDest/{id}',[DestinosController::class, "edit"]);
+    Route::put('/ModDest/{id}',[DestinosController::class, "update"]);
 
 
 Route::get('/dashboard', function () {

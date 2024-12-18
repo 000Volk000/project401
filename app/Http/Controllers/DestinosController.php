@@ -31,11 +31,21 @@ class DestinosController extends Controller
         $destino->nombreUniversidad= $request->nombreUniversidad;
         $destino->especialidad= $request->especialidad;
         $destino->save();
-        return redirect('/')->with('success', 'Destino created successfully.');;
+        return redirect('/')->with('success', 'Destino created successfully.');
     }
     public function edit($id){
-        $destino = DB::table('destinos')->where('id', $id)->first();
-        return view('edit', ['destino' => $destino]);
+        $destino=Destino::find($id);
+        return view('destino.edit',compact('destino'));
+    }
+
+    public function update(DestinosRequest $request,$id){
+        $destino = $request->validated();
+        $destino=Destino::find($id);
+        $destino->nombreCiudad= $request->nombreCiudad;
+        $destino->nombreUniversidad= $request->nombreUniversidad;
+        $destino->especialidad= $request->especialidad;
+        $destino->save();
+        return redirect('/')->with('success', 'Destino modified successfully.');
     }
     public function delete($id){
         $destino = DB::table('destinos')->where('id', $id)->delete();

@@ -83,6 +83,11 @@
                         <a href="/delete/<?php echo e($destino->id); ?>" style="text-decoration: none; color: white;">Eliminar</a>
                     </button>
                 </td>
+                <td><button class="btn btn-secondary">
+                        <a href="/ModDest/<?php echo e($destino->id); ?>" style="text-decoration: none; color: white;">Modificar Destino</a>
+                    </button>
+                </td>
+                <td>
             </tr>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </tbody>
