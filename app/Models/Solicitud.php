@@ -10,7 +10,7 @@ class Solicitud extends Model
     use HasFactory;
 
     protected $table = 'solicitudes';
-    protected $fillable = ['user_id', 'destino_id', 'status', 'preference_order'];
+    protected $fillable = ['user_id', 'destino_id', 'status', 'preference_order', 'status', 'rol'];
 
     // Relación con User
     public function user()

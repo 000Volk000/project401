@@ -51,9 +51,13 @@
             <ul class="navbar-nav ms-auto">
                 @auth
                     <li class="nav-item">
-                        <button class="btn btn-success" id="nuevaSolicitudBtn">
-                            Nueva solicitud
-                        </button>
+                    @if (!$solicitudesAprobadas)
+                        <li class="nav-item">
+                            <button class="btn btn-success" id="nuevaSolicitudBtn">
+                                Nueva solicitud
+                            </button>
+                        </li>
+                    @endif
                         <button class="btn btn-danger cerrar-btn" id="cerrarSolicitudBtn">
                             Cerrar solicitud
                         </button>

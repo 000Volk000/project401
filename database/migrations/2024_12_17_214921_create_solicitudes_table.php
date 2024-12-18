@@ -27,9 +27,11 @@ class CreateSolicitudesTable extends Migration
             // Additional fields (optional)
             $table->string('status')->default('pendiente');
             $table->unsignedInteger('preference_order');
+            $table->string('rol');
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.

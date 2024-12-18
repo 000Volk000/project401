@@ -18,6 +18,7 @@
             <th scope="col">Universidad</th>
             <th scope="col">Orden de Preferencia</th>
             <th scope="col">Estado de Solicitud</th>
+            <th scope="col">Rol</th>
         </tr>
         </thead>
         <tbody>
@@ -35,6 +36,8 @@
 
                 <!-- Mostrar el estado de la solicitud -->
                 <td><?php echo e($solicitud->status); ?></td>
+
+                <td><?php echo e($solicitud->user->rol); ?></td>
             </tr>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </tbody>

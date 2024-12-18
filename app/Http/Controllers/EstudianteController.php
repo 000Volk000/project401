@@ -21,7 +21,13 @@ class EstudianteController extends Controller
             ->select('destinos.*', 'solicitudes.status as solicitud_status', 'solicitudes.preference_order') // Include preference_order in the select
             ->get();
 
-        return view('estudiante', compact('destinos'));
+        // Check if there are any approved solicitudes for the user
+        $solicitudesAprobadas = Solicitud::where('user_id', $userId)
+            ->where('status', 'aprobada')
+            ->exists();
+
+        // Pass the destinos and solicitudesAprobadas flag to the view
+        return view('estudiante', compact('destinos', 'solicitudesAprobadas'));
     }
 
 

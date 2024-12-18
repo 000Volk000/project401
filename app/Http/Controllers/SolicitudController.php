@@ -10,23 +10,15 @@ use Illuminate\Support\Facades\DB;
 
 class SolicitudController extends Controller
 {
-    // Método para mostrar las solicitudes pendientes y aprobadas
+
     public function index()
     {
-        // Obtener todas las solicitudes (pendientes y aprobadas), excluyendo los destinos ya aprobados para el mismo usuario
-        $solicitudes = Solicitud::whereIn('status', ['Pendiente'])
-            ->whereNotIn('destino_id', function ($query) {
-                // Excluir destinos donde el usuario ya tiene una solicitud aprobada
-                $query->select('destino_id')
-                    ->from('solicitudes')
-                    ->where('status', 'Aprobada')
-                    ->whereColumn('solicitudes.user_id', 'solicitudes.user_id');
-            })
-            ->with(['user', 'destino']) // Cargar las relaciones user y destino
-            ->get();
-
+        $solicitudes = Solicitud::where('status', 'pendiente')->get();
         return view('solicitud', compact('solicitudes'));
     }
+
+
+
 
     public function solicitudesAprobadas(){
         // Get only the solicitudes that have 'aprobada' status
@@ -52,6 +44,9 @@ class SolicitudController extends Controller
             Solicitud::where('user_id', $solicitud->user_id)
                 ->where('id', '!=', $id)
                 ->update(['status' => 'Rechazada']);
+            Solicitud::where('destino_id', $solicitud->destino_id)
+                ->where('rol', '==', $solicitud->rol)
+                ->update(['status' => 'Rechazada']);
 
             // Confirmar los cambios
             DB::commit();
@@ -69,6 +64,7 @@ class SolicitudController extends Controller
     public function store($destinoId)
     {
         $userId = Auth::id();
+        $rol = DB::table('users')->where('id', $userId)->value('rol');
 
         // Step 1: Get the highest preference order for the user and increment it
         $lastPreferenceOrder = Solicitud::where('user_id', $userId)
@@ -83,6 +79,7 @@ class SolicitudController extends Controller
             'user_id' => $userId,
             'destino_id' => $destinoId,
             'status' => 'pendiente',
+            'rol' => $rol,
             'preference_order' => $newPreferenceOrder,
         ]);
 

@@ -18,6 +18,7 @@
             <th scope="col">Universidad</th>
             <th scope="col">Orden de Preferencia</th>
             <th scope="col">Estado de Solicitud</th>
+            <th scope="col">Rol</th>
         </tr>
         </thead>
         <tbody>
@@ -35,6 +36,8 @@
 
                 <!-- Mostrar el estado de la solicitud -->
                 <td>{{ $solicitud->status }}</td>
+
+                <td>{{ $solicitud->user->rol }}</td>
             </tr>
         @endforeach
         </tbody>

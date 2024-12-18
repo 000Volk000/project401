@@ -51,9 +51,13 @@
             <ul class="navbar-nav ms-auto">
                 <?php if(auth()->guard()->check()): ?>
                     <li class="nav-item">
-                        <button class="btn btn-success" id="nuevaSolicitudBtn">
-                            Nueva solicitud
-                        </button>
+                    <?php if(!$solicitudesAprobadas): ?>
+                        <li class="nav-item">
+                            <button class="btn btn-success" id="nuevaSolicitudBtn">
+                                Nueva solicitud
+                            </button>
+                        </li>
+                    <?php endif; ?>
                         <button class="btn btn-danger cerrar-btn" id="cerrarSolicitudBtn">
                             Cerrar solicitud
                         </button>
