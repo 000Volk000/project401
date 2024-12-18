@@ -17,13 +17,13 @@ class AsignaturaController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request): View
+    public function index(Request $request)
     {
-        $asignaturas = Asignatura::all();  // Fetch all asignaturas without pagination
+        $asignaturas = Asignatura::with('destino')->get();
 
-        return view('asignatura.index', compact('asignaturas'))
-            ->with('i', 0);  // Set 'i' as 0 since we're no longer paginating
+        return view('asignatura.index', compact('asignaturas'))->with('i', 0);
     }
+
 
 
     /**
@@ -64,8 +64,9 @@ class AsignaturaController extends Controller
     public function edit($id): View
     {
         $asignatura = Asignatura::find($id);
+        $ciudades = Destino::all();
 
-        return view('asignatura.edit', compact('asignatura'));
+        return view('asignatura.edit', compact('asignatura', 'ciudades'));
     }
 
     /**

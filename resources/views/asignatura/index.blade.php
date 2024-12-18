@@ -88,7 +88,7 @@
                     <tr>
                         <th>No</th>
                         <th>Nombre</th>
-                        <th>Idciudad</th>
+                        <th>Ciudad</th>
                         <th>Actions</th>
                     </tr>
                     </thead>
@@ -97,7 +97,7 @@
                         <tr>
                             <td>{{ ++$i }}</td>
                             <td>{{ $asignatura->nombre }}</td>
-                            <td>{{ $asignatura->idCiudad }}</td>
+                            <td>{{ $asignatura->destino ? $asignatura->destino->nombreCiudad : 'N/A' }}</td> <!-- Use destino relationship -->
                             <td>
                                 <form action="{{ route('asignaturas.destroy', $asignatura->id) }}" method="POST">
                                     <a class="btn btn-sm btn-success" href="{{ route('asignaturas.edit', $asignatura->id) }}">
@@ -113,6 +113,7 @@
                         </tr>
                     @endforeach
                     </tbody>
+
                 </table>
             </div>
         </div>

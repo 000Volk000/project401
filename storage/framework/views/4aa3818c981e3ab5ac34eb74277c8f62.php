@@ -4,7 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Asignaturas</title>
+    <title>SprintCode</title>
+    <link rel="icon" href="https://i.ibb.co/gWWr6tN/image-removebg-preview.png" type="image/x-icon">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -88,7 +89,7 @@
                     <tr>
                         <th>No</th>
                         <th>Nombre</th>
-                        <th>Idciudad</th>
+                        <th>Ciudad</th>
                         <th>Actions</th>
                     </tr>
                     </thead>
@@ -97,7 +98,7 @@
                         <tr>
                             <td><?php echo e(++$i); ?></td>
                             <td><?php echo e($asignatura->nombre); ?></td>
-                            <td><?php echo e($asignatura->idCiudad); ?></td>
+                            <td><?php echo e($asignatura->destino ? $asignatura->destino->nombreCiudad : 'N/A'); ?></td> <!-- Use destino relationship -->
                             <td>
                                 <form action="<?php echo e(route('asignaturas.destroy', $asignatura->id)); ?>" method="POST">
                                     <a class="btn btn-sm btn-success" href="<?php echo e(route('asignaturas.edit', $asignatura->id)); ?>">
@@ -115,6 +116,7 @@
                         </tr>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </tbody>
+
                 </table>
             </div>
         </div>

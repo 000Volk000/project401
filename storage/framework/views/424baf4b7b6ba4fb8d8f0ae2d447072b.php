@@ -16,16 +16,19 @@
 
 </head>
 <body>
-    <section class="content container-fluid ">
+
+    <section class="content container-fluid">
         <div class="row justify-content-center align-items-center d-flex vh-100">
             <div class="col-md-7">
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title"><?php echo e(__('Crear')); ?> Asignatura</span>
+                        <span class="card-title"><?php echo e(__('Update')); ?> Asignatura</span>
                     </div>
                     <div class="card-body bg-white">
-                        <form method="POST" action="<?php echo e(route('asignaturas.store')); ?>"  role="form" enctype="multipart/form-data">
+                        <form method="POST" action="<?php echo e(route('asignaturas.update', $asignatura->id)); ?>"  role="form" enctype="multipart/form-data">
+                            <?php echo e(method_field('PATCH')); ?>
+
                             <?php echo csrf_field(); ?>
 
                             <?php echo $__env->make('asignatura.form', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
@@ -36,8 +39,7 @@
             </div>
         </div>
     </section>
-
-
 </body>
 </html>
-<?php /**PATH C:\xampp\htdocs\laravel\sprintcode\resources\views/asignatura/create.blade.php ENDPATH**/ ?>
+
+<?php /**PATH C:\xampp\htdocs\laravel\sprintcode\resources\views/asignatura/edit.blade.php ENDPATH**/ ?>
