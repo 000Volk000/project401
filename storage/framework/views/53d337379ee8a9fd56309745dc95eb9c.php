@@ -1,4 +1,6 @@
 <link rel="stylesheet" href="../../css/register.css" type="text/css">
+<title>SprintCode</title>
+<link rel="icon" href="https://i.ibb.co/gWWr6tN/image-removebg-preview.png" type="image/x-icon">
 
 <!-- Session Status -->
 <?php if (isset($component)) { $__componentOriginal7c1bf3a9346f208f66ee83b06b607fb5 = $component; } ?>

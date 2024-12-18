@@ -1,4 +1,6 @@
 <link rel="stylesheet" href="../../css/register.css" type="text/css">
+<title>SprintCode</title>
+<link rel="icon" href="https://i.ibb.co/gWWr6tN/image-removebg-preview.png" type="image/x-icon">
 
 <!-- Session Status -->
 <x-auth-session-status class="mb-4" :status="session('status')" />
