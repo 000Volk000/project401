@@ -20,9 +20,17 @@
 <x-navbar>
 
 </x-navbar>
+@if ($message = Session::get('success'))
+    <div class="alert alert-success m-4">
+        <p>{{ $message }}</p>
+    </div>
+@endif
 
 <div class="container-fluid mt-5">
     <h1>Destinos Universidades</h1>
+    <button class="btn btn-primary">
+        <a href="/createDest" style="text-decoration: none; color: white;">Crear Destino</a>
+    </button>
     <table class="table">
         <thead>
         <tr>

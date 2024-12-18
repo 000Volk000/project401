@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
+use App\Http\Requests\DestinosRequest;
 
 class DestinosController extends Controller
 {
@@ -20,11 +21,17 @@ class DestinosController extends Controller
         return view('show', ['destino' => $destino]);
     }
     public function create(){
-        return view('create');
+        $destino = new Destino();
+        return view('destino.create',compact('destino'));
     }
-    public function store(Request $request){
-        $destino = new Destino($request);
+    public function store(DestinosRequest $request){
+        $destino = $request->validated();
+        $destino = new Destino();
+        $destino->nombreCiudad= $request->nombreCiudad;
+        $destino->nombreUniversidad= $request->nombreUniversidad;
+        $destino->especialidad= $request->especialidad;
         $destino->save();
+        return redirect('/')->with('success', 'Destino created successfully.');;
     }
     public function edit($id){
         $destino = DB::table('destinos')->where('id', $id)->first();

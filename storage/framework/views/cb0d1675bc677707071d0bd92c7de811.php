@@ -7,7 +7,6 @@
     <title>SprintCode</title>
     <link rel="icon" href="https://i.ibb.co/gWWr6tN/image-removebg-preview.png" type="image/x-icon">
 
-
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
@@ -26,9 +25,7 @@
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
-<?php $component->withAttributes([]); ?>
-
- <?php echo $__env->renderComponent(); ?>
+<?php $component->withAttributes([]); ?> <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginala591787d01fe92c5706972626cdf7231)): ?>
 <?php $attributes = $__attributesOriginala591787d01fe92c5706972626cdf7231; ?>
@@ -38,57 +35,26 @@
 <?php $component = $__componentOriginala591787d01fe92c5706972626cdf7231; ?>
 <?php unset($__componentOriginala591787d01fe92c5706972626cdf7231); ?>
 <?php endif; ?>
-<?php if($message = Session::get('success')): ?>
-    <div class="alert alert-success m-4">
-        <p><?php echo e($message); ?></p>
-    </div>
-<?php endif; ?>
+<section class="content container-fluid ">
+    <div class="row justify-content-center align-items-center d-flex vh-50">
+        <div class="col-md-7">
 
-<div class="container-fluid mt-5">
-    <h1>Destinos Universidades</h1>
-    <button class="btn btn-primary">
-        <a href="/createDest" style="text-decoration: none; color: white;">Crear Destino</a>
-    </button>
-    <table class="table">
-        <thead>
-        <tr>
-            <th scope="col">Ciudad</th>
-            <th scope="col">Universidad</th>
-            <th scope="col">Especialidad</th>
-            <th scope="col">
-                <button class="btn btn-primary">
-                    <a href="/asignaturas/" style="text-decoration: none; color: white;">Gestionar Asignaturas</a>
-                </button>
-            </th>
-            <th scope="col">
-                <button class="btn btn-warning">
-                    <a href="/solicitudes/" style="text-decoration: none; color: white;">Gestionar Solicitudes</a>
-                </button>
-            </th>
-            <th scope="col"></th>
-        </tr>
-        </thead>
-        <tbody>
-        <?php $__currentLoopData = $destinos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $destino): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <tr>
-                <td><?php echo e($destino->nombreCiudad); ?></td>
-                <td><?php echo e($destino->nombreUniversidad); ?></td>
-                <td><?php echo e($destino->especialidad); ?></td>
-                <td><button class="btn btn-info">
-                        <a href="/asignaturas/<?php echo e($destino->id); ?>" style="text-decoration: none; color: white;">Ver asignaturas</a>
-                    </button>
-                </td>
-                <td>
-                    <button class="btn btn-danger">
-                        <a href="/delete/<?php echo e($destino->id); ?>" style="text-decoration: none; color: white;">Eliminar</a>
-                    </button>
-                </td>
-            </tr>
-        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-        </tbody>
-    </table>
-</div>
+            <div class="card card-default">
+                <div class="card-header">
+                    <span class="card-title"><?php echo e(__('Crear')); ?> Destino</span>
+                </div>
+                <div class="card-body bg-white">
+                    <form method="POST" action="/storeDest"  role="form" enctype="multipart/form-data">
+                        <?php echo csrf_field(); ?>
+                        <?php echo $__env->make('destino.form', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
 </body>
 </html>
-
-<?php /**PATH /opt/lampp/htdocs/sprintcode/resources/views/welcome.blade.php ENDPATH**/ ?>
+<?php /**PATH /opt/lampp/htdocs/sprintcode/resources/views/destino/create.blade.php ENDPATH**/ ?>

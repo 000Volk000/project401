@@ -39,6 +39,9 @@ use App\Http\Controllers\AsignaturaController;
     Route::post('/solicitudes/renovar/{destinoId}', [SolicitudController::class, 'renovarSolicitud'])->name('solicitudes.renovar');
     Route::post('/solicitudes/aprobar/{id}', [SolicitudController::class, 'aprobar'])->name('solicitudes.aprobar');
 
+    Route::get('/createDest',[DestinosController::class, "create"]);
+    Route::post('/storeDest',[DestinosController::class, "store"]);
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
