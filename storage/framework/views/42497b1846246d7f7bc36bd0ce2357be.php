@@ -37,6 +37,8 @@
             <th scope="col">Orden de Preferencia</th>
             <th scope="col">Estado de Solicitud</th>
             <th scope="col">Rol</th>
+            <th scope="col">Idioma</th>
+            <th scope="col">Curso</th>
         </tr>
         </thead>
         <tbody>
@@ -56,6 +58,21 @@
                 <td><?php echo e($solicitud->status); ?></td>
 
                 <td><?php echo e($solicitud->user->rol); ?></td>
+
+                <td><?php if( $solicitud->user->idioma != null): ?>
+                        <?php echo e($solicitud->user->idioma); ?>
+
+                    <?php else: ?>
+                        --
+                    <?php endif; ?>
+                </td>
+
+                <td><?php if( $solicitud->user->curso != null): ?>
+                        <?php echo e($solicitud->user->curso); ?>
+
+                    <?php else: ?>
+                        --
+                <?php endif; ?>
             </tr>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </tbody>

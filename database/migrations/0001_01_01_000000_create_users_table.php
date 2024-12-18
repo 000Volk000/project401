@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('password');
             $table->string('especialidad');
             $table->string('rol');
+            $table->enum('idioma', ['A1', 'A2','B1','B2','C1','C2'])->nullable()->default(null);
+            $table->enum('curso',['1º','2º','3º','4º'])->nullable()->default(null);
             $table->rememberToken();
             $table->timestamps();
         });

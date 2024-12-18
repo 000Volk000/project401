@@ -32,6 +32,7 @@ class DatabaseSeeder extends Seeder
             'password' => '1234',
             'especialidad' => 'Informática',
             'rol' => 'profesor',
+            'idioma' => 'C2',
         ]);
 
         User::factory()->create([
@@ -40,6 +41,8 @@ class DatabaseSeeder extends Seeder
             'password' => '1234',
             'especialidad' => 'Informática',
             'rol' => 'estudiante',
+            'idioma' => 'B1',
+            'curso' =>'3º'
         ]);
 
 

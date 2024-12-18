@@ -20,6 +20,8 @@
             <th scope="col">Orden de Preferencia</th>
             <th scope="col">Estado de Solicitud</th>
             <th scope="col">Rol</th>
+            <th scope="col">Idioma</th>
+            <th scope="col">Curso</th>
             <th scope="col">
                 <button type="submit" class="btn btn-primary">
                     <a href="{{ route('solicitudAprobadas') }}" style="text-decoration: none; color: white;">
@@ -45,6 +47,20 @@
 
                 <td>{{ $solicitud->status }}</td>
                 <td>{{ $solicitud->user->rol }}</td>
+
+                <td>@if( $solicitud->user->idioma != null)
+                        {{ $solicitud->user->idioma }}
+                    @else
+                        --
+                @endif
+                </td>
+
+                <td>@if( $solicitud->user->curso != null)
+                        {{ $solicitud->user->curso }}
+                    @else
+                        --
+                    @endif
+                </td>
                 <td>
                     <!-- Acción para aprobar la solicitud -->
                     <form action="{{ route('solicitudes.aprobar', $solicitud->id) }}" method="POST" style="display:inline;">

@@ -38,6 +38,8 @@
             <th scope="col">Orden de Preferencia</th>
             <th scope="col">Estado de Solicitud</th>
             <th scope="col">Rol</th>
+            <th scope="col">Idioma</th>
+            <th scope="col">Curso</th>
             <th scope="col">
                 <button type="submit" class="btn btn-primary">
                     <a href="<?php echo e(route('solicitudAprobadas')); ?>" style="text-decoration: none; color: white;">
@@ -63,6 +65,22 @@
 
                 <td><?php echo e($solicitud->status); ?></td>
                 <td><?php echo e($solicitud->user->rol); ?></td>
+
+                <td><?php if( $solicitud->user->idioma != null): ?>
+                        <?php echo e($solicitud->user->idioma); ?>
+
+                    <?php else: ?>
+                        --
+                <?php endif; ?>
+                </td>
+
+                <td><?php if( $solicitud->user->curso != null): ?>
+                        <?php echo e($solicitud->user->curso); ?>
+
+                    <?php else: ?>
+                        --
+                    <?php endif; ?>
+                </td>
                 <td>
                     <!-- Acción para aprobar la solicitud -->
                     <form action="<?php echo e(route('solicitudes.aprobar', $solicitud->id)); ?>" method="POST" style="display:inline;">

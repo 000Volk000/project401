@@ -19,6 +19,8 @@
             <th scope="col">Orden de Preferencia</th>
             <th scope="col">Estado de Solicitud</th>
             <th scope="col">Rol</th>
+            <th scope="col">Idioma</th>
+            <th scope="col">Curso</th>
         </tr>
         </thead>
         <tbody>
@@ -38,6 +40,19 @@
                 <td>{{ $solicitud->status }}</td>
 
                 <td>{{ $solicitud->user->rol }}</td>
+
+                <td>@if( $solicitud->user->idioma != null)
+                        {{ $solicitud->user->idioma }}
+                    @else
+                        --
+                    @endif
+                </td>
+
+                <td>@if( $solicitud->user->curso != null)
+                        {{ $solicitud->user->curso }}
+                    @else
+                        --
+                @endif
             </tr>
         @endforeach
         </tbody>
