@@ -16,9 +16,9 @@
 
 </head>
 <body>
-
+<x-navbar></x-navbar>
     <section class="content container-fluid">
-        <div class="row justify-content-center align-items-center d-flex vh-100">
+        <div class="row justify-content-center align-items-center d-flex vh-50">
             <div class="col-md-7">
 
                 <div class="card card-default">

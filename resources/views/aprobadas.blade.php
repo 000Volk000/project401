@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-
+<x-navbar></x-navbar>
 <div class="container mt-5">
     <h1>Listado de Solicitudes Aprobadas</h1>
     <table class="table table-bordered">
