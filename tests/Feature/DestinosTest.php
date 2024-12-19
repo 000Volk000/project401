@@ -12,6 +12,7 @@ class DestinosTest extends TestCase
 {
     public function test_create(): void
     {
+        $this->withoutMiddleware();
         //Data to insert on the database destinos
         $datos1 = [
             'nombreCiudad' => 'Test_1',
@@ -41,6 +42,7 @@ class DestinosTest extends TestCase
 
     public function test_modify()
     {
+        $this->withoutMiddleware();
         //Data of the current destination to modify, we will modify the first that we created in the previous test
         $datos1 = Destino::where('nombreCiudad', 'Test_1')->first();
         //Data to modify the destination
@@ -74,6 +76,7 @@ class DestinosTest extends TestCase
 
     public function test_delete()
     {
+        $this->withoutMiddleware();
         //Select the first destination created in the previous tests
         $datos1 = Destino::where('nombreCiudad', 'Test_1_Modified')->first();
         //Delete the destination

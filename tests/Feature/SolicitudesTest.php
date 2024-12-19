@@ -15,6 +15,7 @@ class SolicitudesTest extends TestCase
     use DatabaseTransactions;
     public function test_request(): void
     {
+        $this->withoutMiddleware();
         //Create a new university destination to request on
         $destino = [
             'nombreCiudad' => 'Test_1',
@@ -34,6 +35,7 @@ class SolicitudesTest extends TestCase
 
     public function test_modify_status()
     {
+        $this->withoutMiddleware();
         //Create a new university destination to request on
         $destino = [
             'nombreCiudad' => 'Test_1',

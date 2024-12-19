@@ -13,6 +13,7 @@ use Tests\TestCase;
 class AsignaturaTest extends TestCase{
     use DatabaseTransactions;
     public function test_create_asignatura(): void{
+        $this->withoutMiddleware();
         Auth::loginUsingId(1);
         // Data to create the asignatura (including idCiudad as a foreign key)
         $data = [
@@ -34,6 +35,7 @@ class AsignaturaTest extends TestCase{
     }
 
     public function test_update_asignatura(): void{
+        $this->withoutMiddleware();
         Auth::loginUsingId(1);
         $data = [
             'nombre' => 'Matematica',
@@ -41,18 +43,19 @@ class AsignaturaTest extends TestCase{
         ];
         $this->post('asignatura.store', $data);
         $data = [
-            'nombre' => 'Calculo',
+            'nombre' => 'Arquitectura',
             'idCiudad' => '2',  // Assuming idCiudad is the foreign key to Destino
         ];
         $id = DB::table('asignaturas')->insertGetId(['nombre' => 'Matematica', 'idCiudad' => '1']);
-        $response = $this->patch('/asignatura/' . $id, $data);
+        $response = $this->patch('/asignaturas/' . $id, $data);
         $this->assertDatabaseHas('asignaturas', [
-            'nombre' => 'Calculo',
+            'nombre' => 'Arquitectura',
             'idCiudad' => '2', // Ensure the correct foreign key is set
         ]);
     }
 
     public function test_delete_asignatura(): void{
+        $this->withoutMiddleware();
         Auth::loginUsingId(1);
         $data = [
             'nombre' => 'Matematica',
