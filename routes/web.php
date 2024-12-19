@@ -60,6 +60,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 });
 
+    Route::get('/rick', function () {
+        return redirect('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+    });
     Route::get('/{id}',[UndefineController::class, 'index']);
 
 require __DIR__.'/auth.php';
