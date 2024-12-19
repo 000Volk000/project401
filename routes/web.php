@@ -12,7 +12,7 @@ use App\Http\Controllers\AsignaturaController;
 use App\Http\Middleware\CheckAdminRole;
 use App\Http\Middleware\CheckProfesorRole;
 use App\Http\Middleware\CheckStudentRole;
-;
+
 
     Route::get('/', [DestinosController::class, "index"])->name('destinos.admin')->middleware(CheckAdminRole::class);
     Route::get('/show/{id}', [DestinosController::class, "show"]);
@@ -56,7 +56,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-    Route::post('/login', [LoginController::class, 'login']);
+    Route::post('/login', [LoginController::class, 'login'])->name('login');
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 });
 
