@@ -49,7 +49,7 @@ RUN php artisan view:cache
 RUN php artisan key:generate
 
 # Run database migrations
-RUN php artisan migrate:refresh
+RUN php artisan migrate:refresh --force
 
 # Run database seeders
 RUN php artisan db:seed
