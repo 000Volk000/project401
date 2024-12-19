@@ -1,6 +1,10 @@
 # Use an official PHP runtime as the base image
 FROM php:8.2-fpm
 
+
+# Copy the .env.deployment file to .env
+COPY .env.deployment .env
+
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
     libpq-dev \
@@ -39,8 +43,6 @@ RUN chown -R www-data:www-data /var/www \
 # Install Laravel dependencies
 RUN composer install --optimize-autoloader
 
-# Copy the .env.deployment file to .env
-# COPY .env.deployment .env
 
 #Cleaning cache config
 RUN php artisan config:cache
