@@ -42,7 +42,7 @@ class SolicitudesTest extends TestCase
         ];
         $this->post('/storeDest', $destino);
         $destinoId = Destino::where('nombreCiudad', 'Test_1')->first()->id;
-        //Simulate the login of the user admin
+        //Simulate the login of estudiant
         Auth::loginUsingId(3);
         //Request the destination
         $this->get('/solicitud/' . $destinoId);
