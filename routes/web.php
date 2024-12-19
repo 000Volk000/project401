@@ -5,13 +5,14 @@ use App\Http\Controllers\EstudianteController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SolicitudController;
+use App\Http\Controllers\UndefineController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfesorController;
 use App\Http\Controllers\AsignaturaController;
-use \App\Http\Middleware\CheckAdminRole;
-use \App\Http\Middleware\CheckProfesorRole;
+use App\Http\Middleware\CheckAdminRole;
+use App\Http\Middleware\CheckProfesorRole;
 use App\Http\Middleware\CheckStudentRole;
-
+;
 
     Route::get('/', [DestinosController::class, "index"])->name('destinos.admin')->middleware(CheckAdminRole::class);
     Route::get('/show/{id}', [DestinosController::class, "show"]);
@@ -58,5 +59,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/login', [LoginController::class, 'login']);
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 });
+
+    Route::get('/{id}',[UndefineController::class, 'index']);
 
 require __DIR__.'/auth.php';
