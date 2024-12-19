@@ -37,7 +37,7 @@ RUN chown -R www-data:www-data /var/www \
     && chmod -R 775 /var/www/bootstrap/cache
 
 # Install Laravel dependencies
-RUN composer install --no-dev --working-dir=/var/www/html
+RUN composer install
 
 
 #Cleaning cache config
