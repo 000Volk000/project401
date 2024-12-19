@@ -27,82 +27,67 @@
     </style>
 </head>
 <body>
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top ">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img src="https://i.ibb.co/gWWr6tN/image-removebg-preview.png" width="70px"></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Services</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
-                </li>
-            </ul>
-            <ul class="navbar-nav ms-auto">
-                <?php if(auth()->guard()->check()): ?>
-                    <li class="nav-item">
-                    <?php if(!$solicitudesAprobadas): ?>
-                        <li class="nav-item">
-                            <button class="btn btn-success" id="nuevaSolicitudBtn">
-                                Nueva solicitud
-                            </button>
-                        </li>
-                    <?php endif; ?>
-                        <button class="btn btn-danger cerrar-btn" id="cerrarSolicitudBtn">
-                            Cerrar solicitud
-                        </button>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Bienvenido, <?php echo e(Auth::user()->name); ?></a>
-                    </li>
-                    <li class="nav-item">
-                        <form action="<?php echo e(route('logout')); ?>" method="POST" style="display: inline;">
-                            <?php echo csrf_field(); ?>
-                            <button type="submit" class="btn btn-link nav-link" style="text-decoration: none;">Logout</button>
-                        </form>
-                    </li>
-                <?php else: ?>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?php echo e(route('login')); ?>">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?php echo e(route('register')); ?>">Register</a>
-                    </li>
-                <?php endif; ?>
-            </ul>
-        </div>
-    </div>
-</nav>
-
+<?php if (isset($component)) { $__componentOriginala591787d01fe92c5706972626cdf7231 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginala591787d01fe92c5706972626cdf7231 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.navbar','data' => []] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('navbar'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?> <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginala591787d01fe92c5706972626cdf7231)): ?>
+<?php $attributes = $__attributesOriginala591787d01fe92c5706972626cdf7231; ?>
+<?php unset($__attributesOriginala591787d01fe92c5706972626cdf7231); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginala591787d01fe92c5706972626cdf7231)): ?>
+<?php $component = $__componentOriginala591787d01fe92c5706972626cdf7231; ?>
+<?php unset($__componentOriginala591787d01fe92c5706972626cdf7231); ?>
+<?php endif; ?>
 <div class="container-fluid mt-5">
     <h1>Destinos Universidades</h1>
+    <?php if(!$solicitudesAprobadas): ?>
+        <?php if (isset($component)) { $__componentOriginal49e789a71b14f452b84038b0808c5260 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal49e789a71b14f452b84038b0808c5260 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.newapplication','data' => []] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('newapplication'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?> <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal49e789a71b14f452b84038b0808c5260)): ?>
+<?php $attributes = $__attributesOriginal49e789a71b14f452b84038b0808c5260; ?>
+<?php unset($__attributesOriginal49e789a71b14f452b84038b0808c5260); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal49e789a71b14f452b84038b0808c5260)): ?>
+<?php $component = $__componentOriginal49e789a71b14f452b84038b0808c5260; ?>
+<?php unset($__componentOriginal49e789a71b14f452b84038b0808c5260); ?>
+<?php endif; ?>
+    <?php endif; ?>
     <table class="table">
         <thead>
         <tr>
             <th scope="col">Ciudad</th>
             <th scope="col">Universidad</th>
             <th scope="col">Especialidad</th>
+            <th scope="col">Plan de convalidación</th>
             <th scope="col"></th>
             <th scope="col"></th>
         </tr>
         </thead>
+        </th>
         <tbody>
         <?php $__currentLoopData = $destinos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $destino): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <tr>
                 <td><?php echo e($destino->nombreCiudad); ?></td>
                 <td><?php echo e($destino->nombreUniversidad); ?></td>
                 <td><?php echo e($destino->especialidad); ?></td>
+                <td><?php echo e($destino->plan); ?></td>
                 <td>
                     <button class="btn btn-primary">
                         <a href="/asignaturas/<?php echo e($destino->id); ?>" style="text-decoration: none; color: white;">

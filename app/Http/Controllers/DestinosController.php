@@ -47,6 +47,7 @@ class DestinosController extends Controller
         $destino->nombreCiudad= $request->nombreCiudad;
         $destino->nombreUniversidad= $request->nombreUniversidad;
         $destino->especialidad= $request->especialidad;
+        $destino->plan=$request->plan;
         $destino->save();
         return redirect('/')->with('success', 'Destino modified successfully.');
     }

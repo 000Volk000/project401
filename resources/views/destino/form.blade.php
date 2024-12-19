@@ -23,22 +23,20 @@
             <label for="plan" class="form-label">{{ __('Plan de convalidación') }}</label>
             <select name="plan" class="form-control @error('plan') is-invalid @enderror" id="plan">
                 <option value="" disabled selected>
-                @if($destinosel->plan)
-                    {{$destinosel->plan}}
+                    @if($destinosel->plan)
+                        {{$destinosel->plan}}
                     @else
                         ------------------
-                @endif
-
-
+                    @endif
                 </option>
-                    <option value="{{ $destinosel->plan }}" {{ old('plan', $destinosel->plan)}}>
-                        1 cuatrimestre
-                    </option>
-                    <option value="{{ $destinosel->plan }}" {{ old('plan', $destinosel->plan)}}>
+                <option value="1 cuatrimestre" {{ old('plan', $destinosel->plan) == '1 cuatrimestre' ? 'selected' : '' }}>
+                    1 cuatrimestre
+                </option>
+                <option value="Curso completo" {{ old('plan', $destinosel->plan) == 'Curso completo' ? 'selected' : '' }}>
                     Curso completo
-                    </option>
+                </option>
             </select>
-            {!! $errors->first('idCiudad', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
+            {!! $errors->first('plan', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
         </div>
 
     </div>

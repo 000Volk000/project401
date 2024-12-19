@@ -13,8 +13,6 @@
     <link href="../css/app.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
-
 </head>
 <body>
 <?php if (isset($component)) { $__componentOriginala591787d01fe92c5706972626cdf7231 = $component; } ?>
@@ -36,28 +34,22 @@
 <?php $component = $__componentOriginala591787d01fe92c5706972626cdf7231; ?>
 <?php unset($__componentOriginala591787d01fe92c5706972626cdf7231); ?>
 <?php endif; ?>
-    <section class="content container-fluid ">
-        <div class="row justify-content-center align-items-center d-flex vh-50">
-            <div class="col-md-7">
 
-                <div class="card card-default">
-                    <div class="card-header">
-                        <span class="card-title"><?php echo e(__('Crear')); ?> Asignatura</span>
-                    </div>
-                    <div class="card-body bg-white">
-                        <form method="POST" action="<?php echo e(route('asignaturas.store')); ?>"  role="form" enctype="multipart/form-data">
-                            <?php echo csrf_field(); ?>
-
-                            <?php echo $__env->make('asignatura.form', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-
-                        </form>
-                    </div>
+<section class="content container-fluid ">
+    <div class="row justify-content-center align-items-center d-flex vh-50">
+        <div class="col-md-7">
+            <div class="card card-default">
+                <div class="card-header">
+                    <span class="card-title row justify-content-center align-items-center d-flex vh-50">Página no definida. Por favor pulse el botón Home en la barra de navegación, o el botón de volver</span>
+                </div>
+                <div class="card-body bg-white d-flex justify-content-center">
+                    <button class="btn btn-info" style="background: blue; border: 0px;">
+                        <a href="/" style="text-decoration: none; color: white;">Volver al menu principal</a>
+                    </button>
                 </div>
             </div>
         </div>
-    </section>
-
-
+    </div>
+</section>
 </body>
-</html>
-<?php /**PATH C:\xampp\htdocs\laravel\sprintcode\resources\views/asignatura/create.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\xampp\htdocs\laravel\sprintcode\resources\views/undefine.blade.php ENDPATH**/ ?>
