@@ -17,7 +17,8 @@ class DestinosTest extends TestCase
         $datos1 = [
             'nombreCiudad' => 'Test_1',
             'nombreUniversidad' => 'Universidad de Test_1',
-            'especialidad' => 'informatica'
+            'especialidad' => 'informatica',
+            'plan' => '1 cuatrimestre'
         ];
         //Save the data on the database
         $create1 = $this->post('/storeDest', $datos1);
@@ -30,7 +31,8 @@ class DestinosTest extends TestCase
         $datos2 = [
             'nombreCiudad' => 'Test_2',
             'nombreUniversidad' => 'Universidad de Test_2',
-            'especialidad' => 'informatica'
+            'especialidad' => 'informatica',
+            'plan' => '1 cuatrimestre'
         ];
         //Save the data on the database
         $create2 = $this->post('/storeDest', $datos2);
@@ -56,7 +58,8 @@ class DestinosTest extends TestCase
         $this->assertDatabaseHas('destinos', ['id' => $datos1->id,
             'nombreCiudad' => $datos1->nombreCiudad,
             'nombreUniversidad' => $datos1->nombreUniversidad,
-            'especialidad' => $datos1->especialidad]);
+            'especialidad' => $datos1->especialidad,
+            'plan' => $datos1->plan]);
 
         //Data of the current destination to modify, we will modify the second that we created in the previous test
         $datos2 = Destino::where('nombreCiudad', 'Test_2')->first();
@@ -71,7 +74,8 @@ class DestinosTest extends TestCase
         $this->assertDatabaseHas('destinos', ['id' => $datos2->id,
             'nombreCiudad' => $datos2->nombreCiudad,
             'nombreUniversidad' => $datos2->nombreUniversidad,
-            'especialidad' => $datos2->especialidad]);
+            'especialidad' => $datos2->especialidad,
+            'plan' => $datos2->plan]);
     }
 
     public function test_delete()
@@ -87,7 +91,8 @@ class DestinosTest extends TestCase
         $this->assertDatabaseMissing('destinos', ['id' => $datos1->id,
             'nombreCiudad' => $datos1->nombreCiudad,
             'nombreUniversidad' => $datos1->nombreUniversidad,
-            'especialidad' => $datos1->especialidad]);
+            'especialidad' => $datos1->especialidad,
+            'plan' => $datos1->plan]);
 
         //Select the second destination created in the previous tests
         $datos2 = Destino::where('nombreCiudad', 'Test_2_Modified')->first();
@@ -99,6 +104,7 @@ class DestinosTest extends TestCase
         $this->assertDatabaseMissing('destinos', ['id' => $datos2->id,
             'nombreCiudad' => $datos2->nombreCiudad,
             'nombreUniversidad' => $datos2->nombreUniversidad,
-            'especialidad' => $datos2->especialidad]);
+            'especialidad' => $datos2->especialidad,
+            'plan' => $datos2->plan]);
     }
 }

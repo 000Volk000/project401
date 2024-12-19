@@ -20,7 +20,8 @@ class SolicitudesTest extends TestCase
         $destino = [
             'nombreCiudad' => 'Test_1',
             'nombreUniversidad' => 'Universidad de Test_1',
-             'especialidad' => 'informatica'
+            'especialidad' => 'informatica',
+            'plan' => '1 cuatrimestre'
         ];
         $this->post('/storeDest', $destino);
         //Get the id of the created destination
@@ -40,7 +41,8 @@ class SolicitudesTest extends TestCase
         $destino = [
             'nombreCiudad' => 'Test_1',
             'nombreUniversidad' => 'Universidad de Test_1',
-            'especialidad' => 'informatica'
+            'especialidad' => 'informatica',
+            'plan' => '1 cuatrimestre'
         ];
         $this->post('/storeDest', $destino);
         $destinoId = Destino::where('nombreCiudad', 'Test_1')->first()->id;
