@@ -52,7 +52,7 @@
                         {{ $solicitud->user->curso }}
                     @else
                         --
-                @endif
+                @endif  
             </tr>
         @endforeach
         </tbody>

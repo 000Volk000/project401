@@ -8,18 +8,19 @@ use App\Http\Controllers\SolicitudController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfesorController;
 use App\Http\Controllers\AsignaturaController;
+use \App\Http\Middleware\CheckAdminRole;
+use \App\Http\Middleware\CheckProfesorRole;
+use App\Http\Middleware\CheckStudentRole;
 
 
-
-    Route::get('/', [DestinosController::class, "index"])->name('destinos.admin');//>middleware(\App\Http\Middleware\CheckAdminRole::class);
+    Route::get('/', [DestinosController::class, "index"])->name('destinos.admin')->middleware(CheckAdminRole::class);
     Route::get('/show/{id}', [DestinosController::class, "show"]);
     Route::get('/create', [DestinosController::class, "create"]);
     Route::post('/store', [DestinosController::class, "store"]);
     Route::get('/edit/{id}', [DestinosController::class, "edit"]);
     Route::get('/delete/{id}', [DestinosController::class, "delete"]);
-    Route::get('/profesor', [ProfesorController::class, "index"])->name('profesor');
-    Route::get('/estudiante', [EstudianteController::class, "index"])->name('estudiante');
-    Route::get('/profesor', [EstudianteController::class, "index"])->name('profesor');
+    Route::get('/estudiante', [EstudianteController::class, "index"])->name('estudiante')->middleware(CheckStudentRole::class);
+    Route::get('/profesor', [ProfesorController::class, "index"])->name('profesor')->middleware(CheckProfesorRole::class);
 
     //Route::resource('asignaturas', AsignaturaController::class);
 
@@ -45,9 +46,7 @@ use App\Http\Controllers\AsignaturaController;
     Route::put('/ModDest/{id}',[DestinosController::class, "update"]);
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+
 
 
 
