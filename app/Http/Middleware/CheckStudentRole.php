@@ -16,10 +16,11 @@ class CheckStudentRole
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::check() && Auth::user()->rol === 'estudiante') {
+        if (Auth::check() && (Auth::user()->rol === 'estudiante' || Auth::user()->rol === 'admin')) {
             return $next($request);
+        } else if (Auth::check() && Auth::user()->rol === 'profesor') {
+            return redirect('/profesor');
         }
-
         // Redirect to login or forbidden page if not admin
         return redirect('/login')->withErrors(['message' => 'You do not have access to this page.']);
     }
