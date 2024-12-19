@@ -44,7 +44,7 @@
                     <span class="card-title"><?php echo e(__('Modificar')); ?> Destino</span>
                 </div>
                 <div class="card-body bg-white">
-                    <form method="POST" action="/ModDest/<?php echo e($destino->id); ?>"  role="form" enctype="multipart/form-data">
+                    <form method="POST" action="/ModDest/<?php echo e($destinosel->id); ?>"  role="form" enctype="multipart/form-data">
                         <?php echo csrf_field(); ?>
                         <?php echo method_field('PUT'); ?>
                         <?php echo $__env->make('destino.form', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>

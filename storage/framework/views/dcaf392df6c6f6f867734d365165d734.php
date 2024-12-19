@@ -10,7 +10,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('nombreCiudad', $destino?->nombreCiudad)); ?>" id="nombreCiudad" placeholder="Nombre Ciudad">
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('nombreCiudad', $destinosel?->nombreCiudad)); ?>" id="nombreCiudad" placeholder="Nombre Ciudad">
             <?php echo $errors->first('nombreCiudad', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>'); ?>
 
         </div>
@@ -24,7 +24,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('nombreUniversidad', $destino?->nombreUniversidad)); ?>" id="nombreUniversidad" placeholder="Nombre Universidad">
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('nombreUniversidad', $destinosel?->nombreUniversidad)); ?>" id="nombreUniversidad" placeholder="Nombre Universidad">
             <?php echo $errors->first('nombreUniversidad', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>'); ?>
 
         </div>
@@ -38,8 +38,39 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('especialidad', $destino?->especialidad)); ?>" id="especialidad" placeholder="Especialidad">
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('especialidad', $destinosel?->especialidad)); ?>" id="especialidad" placeholder="Especialidad">
             <?php echo $errors->first('especialidad', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>'); ?>
+
+        </div>
+
+        <div class="form-group mb-2 mb20">
+            <label for="plan" class="form-label"><?php echo e(__('Plan de convalidación')); ?></label>
+            <select name="plan" class="form-control <?php $__errorArgs = ['plan'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" id="plan">
+                <option value="" disabled selected>
+                <?php if($destinosel->plan): ?>
+                    <?php echo e($destinosel->plan); ?>
+
+                    <?php else: ?>
+                        ------------------
+                <?php endif; ?>
+
+
+                </option>
+                    <option value="<?php echo e($destinosel->plan); ?>" <?php echo e(old('plan', $destinosel->plan)); ?>>
+                        1 cuatrimestre
+                    </option>
+                    <option value="<?php echo e($destinosel->plan); ?>" <?php echo e(old('plan', $destinosel->plan)); ?>>
+                    Curso completo
+                    </option>
+            </select>
+            <?php echo $errors->first('idCiudad', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>'); ?>
 
         </div>
 

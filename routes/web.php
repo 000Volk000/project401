@@ -28,7 +28,7 @@ use App\Http\Middleware\CheckStudentRole;
     Route::get('/asignaturas', [AsignaturaController::class, "index"])->name('asignaturas.index')->middleware(CheckAdminRole::class);;
     Route::get('/asignaturas/create', [AsignaturaController::class, "create"])->name('asignaturas.create')->middleware(CheckAdminRole::class);
     Route::post('/asignaturas/store', [AsignaturaController::class, "store"])->name('asignaturas.store')->middleware(CheckAdminRole::class);
-    Route::get('/asignaturas/{id}', [AsignaturaController::class, "searchByCity"])->name('asignatura')->middleware(CheckAdminRole::class);
+    Route::get('/asignaturas/{id}', [AsignaturaController::class, "searchByCity"])->name('asignatura');
     Route::get('/asignaturas/{id}/edit', [AsignaturaController::class, "edit"])->name('asignaturas.edit')->middleware(CheckAdminRole::class);
     Route::patch('/asignaturas/{id}', [AsignaturaController::class, "update"])->name('asignaturas.update')->middleware(CheckAdminRole::class);
     Route::delete('/asignaturas/{id}', [AsignaturaController::class, "destroy"])->name('asignaturas.destroy')->middleware(CheckAdminRole::class);

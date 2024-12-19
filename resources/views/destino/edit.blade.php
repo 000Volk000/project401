@@ -26,7 +26,7 @@
                     <span class="card-title">{{ __('Modificar') }} Destino</span>
                 </div>
                 <div class="card-body bg-white">
-                    <form method="POST" action="/ModDest/{{$destino->id}}"  role="form" enctype="multipart/form-data">
+                    <form method="POST" action="/ModDest/{{$destinosel->id}}"  role="form" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         @include('destino.form')

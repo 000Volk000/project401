@@ -19,11 +19,13 @@ class DestinoFactory extends Factory
         $asignaturas = ['Estructura de Datos', 'Introducción a la Programación', 'Física', 'Cálculo', 'Álgebra'];
         $ListaCiudades = ['Madrid', 'Barcelona', 'Valencia', 'Sevilla', 'Granada', 'Zaragoza', 'Bilbao', 'Málaga', 'Valladolid', 'Salamanca', 'Alicante', 'Córdoba', 'Oviedo', 'Santander', 'Murcia', 'Burgos', 'León', 'Santiago de Compostela', 'Pamplona', 'San Sebastián'];
         $ciudad=$this->faker->randomElement($ListaCiudades);
+        $planconv=['1 cuatrimestre', 'Curso completo'];
         return [
             //
             'nombreCiudad' => $ciudad,
             'nombreUniversidad' => 'Universidad de ' . $ciudad,
             'especialidad' => $this->faker->name(),
+            'plan' => $this->faker->randomElement($planconv),
         ];
     }
 }

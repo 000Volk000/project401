@@ -75,6 +75,7 @@
             <th scope="col">Ciudad</th>
             <th scope="col">Universidad</th>
             <th scope="col">Especialidad</th>
+            <th scope="col">Plan de convalidación</th>
             <th scope="col"></th>
             <th scope="col"></th>
         </tr>
@@ -86,6 +87,7 @@
                 <td><?php echo e($destino->nombreCiudad); ?></td>
                 <td><?php echo e($destino->nombreUniversidad); ?></td>
                 <td><?php echo e($destino->especialidad); ?></td>
+                <td><?php echo e($destino->plan); ?></td>
                 <td>
                     <button class="btn btn-primary">
                         <a href="/asignaturas/<?php echo e($destino->id); ?>" style="text-decoration: none; color: white;">

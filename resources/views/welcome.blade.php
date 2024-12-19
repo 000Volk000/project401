@@ -37,6 +37,7 @@
             <th scope="col">Ciudad</th>
             <th scope="col">Universidad</th>
             <th scope="col">Especialidad</th>
+            <th scope="col">Plan de convalidación</th>
             <th scope="col">
                 <button class="btn btn-primary">
                     <a href="/asignaturas/" style="text-decoration: none; color: white;">Gestionar Asignaturas</a>
@@ -56,6 +57,7 @@
                 <td>{{$destino->nombreCiudad}}</td>
                 <td>{{$destino->nombreUniversidad}}</td>
                 <td>{{$destino->especialidad}}</td>
+                <td>{{$destino->plan}}</td>
                 <td><button class="btn btn-info">
                         <a href="/asignaturas/{{$destino->id}}" style="text-decoration: none; color: white;">Ver asignaturas</a>
                     </button>

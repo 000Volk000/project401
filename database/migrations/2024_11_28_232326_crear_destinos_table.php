@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('nombreCiudad');
             $table->string('nombreUniversidad');
             $table->string('especialidad');
+            $table->enum('plan', ['1 cuatrimestre', 'Curso completo'])->default('1 cuatrimestre');
             $table->timestamps();
         });
     }

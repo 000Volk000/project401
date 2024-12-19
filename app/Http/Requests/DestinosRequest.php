@@ -25,6 +25,7 @@ class DestinosRequest extends FormRequest
                 'nombreCiudad' => 'required',
                 'nombreUniversidad' => 'required',
                 'especialidad' => 'required',
+                'plan' => 'required',
             ];
     }
 }

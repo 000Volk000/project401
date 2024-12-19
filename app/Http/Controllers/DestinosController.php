@@ -21,8 +21,9 @@ class DestinosController extends Controller
         return view('show', ['destino' => $destino]);
     }
     public function create(){
-        $destino = new Destino();
-        return view('destino.create',compact('destino'));
+        $destinosel = new Destino();
+        $destinos=Destino::all();
+        return view('destino.create',compact(['destinos','destinosel']));
     }
     public function store(DestinosRequest $request){
         $destino = $request->validated();
@@ -30,12 +31,14 @@ class DestinosController extends Controller
         $destino->nombreCiudad= $request->nombreCiudad;
         $destino->nombreUniversidad= $request->nombreUniversidad;
         $destino->especialidad= $request->especialidad;
+        $destino->plan=$request->plan;
         $destino->save();
         return redirect('/')->with('success', 'Destino created successfully.');
     }
     public function edit($id){
-        $destino=Destino::find($id);
-        return view('destino.edit',compact('destino'));
+        $destinosel=Destino::find($id);
+        $destinos=Destino::all();
+        return view('destino.edit',compact(['destinosel','destinos']));
     }
 
     public function update(DestinosRequest $request,$id){
