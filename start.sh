@@ -2,7 +2,12 @@
 echo "Running composer"
 composer global require hirak/prestissimo
 composer dump-autoload
-composer install --optimize-autoloader
+
+# Run Composer (if needed)
+if [ ! -d "vendor" ]; then
+  composer install --no-dev --optimize-autoloader
+fi
+
 
 echo "Setting permissions"
 sudo chown -R www-data:www-data /var/www \
@@ -23,5 +28,7 @@ php artisan migrate --force
 
 echo "Running seeders"
 php artisan db:seed --force
+
+php-fpm
 
 echo "done deploying"
