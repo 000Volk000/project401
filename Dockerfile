@@ -39,5 +39,11 @@ COPY conf/nginx/nginx-site.conf /etc/nginx/sites-available/default
 # Expose the HTTP and HTTPS ports
 EXPOSE 80 443
 
+# Copy start.sh into the Docker image
+COPY start.sh /start.sh
+
+# Ensure it's executable
+RUN chmod +x /start.sh
+
 # Start PHP-FPM and Nginx together
 CMD ["bash", "/start.sh"]
