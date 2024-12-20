@@ -51,13 +51,13 @@ RUN php artisan view:cache
 RUN php artisan key:generate
 
 # Run database migrations
-RUN php artisan migrate:refresh
+RUN php artisan migrate:refresh --force
 
 # Run database seeders
-RUN php artisan db:seed
+RUN php artisan db:seed --force
 
 # Expose port 8000
 EXPOSE 8000
 
 # Start PHP-FPM and Laravel
-CMD php artisan serve --host=0.0.0.0 --port=8000    
+CMD php artisan serve --host=0.0.0.0 --port=8000
