@@ -54,23 +54,21 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" id="plan">
                 <option value="" disabled selected>
-                <?php if($destinosel->plan): ?>
-                    <?php echo e($destinosel->plan); ?>
+                    <?php if($destinosel->plan): ?>
+                        <?php echo e($destinosel->plan); ?>
 
                     <?php else: ?>
                         ------------------
-                <?php endif; ?>
-
-
+                    <?php endif; ?>
                 </option>
-                    <option value="<?php echo e($destinosel->plan); ?>" <?php echo e(old('plan', $destinosel->plan)); ?>>
-                        1 cuatrimestre
-                    </option>
-                    <option value="<?php echo e($destinosel->plan); ?>" <?php echo e(old('plan', $destinosel->plan)); ?>>
+                <option value="1 cuatrimestre" <?php echo e(old('plan', $destinosel->plan) == '1 cuatrimestre' ? 'selected' : ''); ?>>
+                    1 cuatrimestre
+                </option>
+                <option value="Curso completo" <?php echo e(old('plan', $destinosel->plan) == 'Curso completo' ? 'selected' : ''); ?>>
                     Curso completo
-                    </option>
+                </option>
             </select>
-            <?php echo $errors->first('idCiudad', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>'); ?>
+            <?php echo $errors->first('plan', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>'); ?>
 
         </div>
 
