@@ -52,7 +52,7 @@ RUN php artisan key:generate
 RUN php artisan migrate:refresh --force
 
 # Run database seeders
-RUN php artisan db:seed
+RUN php artisan db:seed --force
 
 # Expose port 8000
 EXPOSE 8000
