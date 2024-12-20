@@ -29,7 +29,8 @@ RUN chown -R www-data:www-data /var/www \
     && chmod -R 775 /var/www/bootstrap/cache
 
 # Copy the Nginx configuration file into the container
-COPY nginx.conf /etc/nginx/sites-available/default
+COPY conf/nginx/nginx-site.conf /etc/nginx/sites-available/default
+
 
 # Expose the HTTP and HTTPS ports
 EXPOSE 80 443
