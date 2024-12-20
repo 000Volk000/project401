@@ -1,4 +1,6 @@
 FROM richarvey/nginx-php-fpm:1.7.2
+# Use an official PHP runtime as the base image
+FROM php:8.2-fpm
 COPY . .
 # Image config
 ENV SKIP_COMPOSER 1
