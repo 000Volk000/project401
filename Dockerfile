@@ -39,6 +39,8 @@ RUN chown -R www-data:www-data /var/www \
 # Install Laravel dependencies
 RUN composer install --optimize-autoloader
 
+# Copy the .env.deployment file to .env
+# COPY .env.deployment .env
 
 #Cleaning cache config
 RUN php artisan config:cache
@@ -49,13 +51,13 @@ RUN php artisan view:cache
 RUN php artisan key:generate
 
 # Run database migrations
-RUN php artisan migrate:refresh --force
+RUN php artisan migrate:refresh
 
 # Run database seeders
-RUN php artisan db:seed --force
+RUN php artisan db:seed
 
 # Expose port 8000
 EXPOSE 8000
 
 # Start PHP-FPM and Laravel
-CMD php artisan serve --host=0.0.0.0 --port=8000
+CMD php artisan serve --host=0.0.0.0 --port=8000    
