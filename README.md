@@ -6,11 +6,24 @@
 
 <div align="center">
 
-Proyecto de creación de una aplicación software para las practicas de la asignatura "Ingeniería del Software".
+Proyecto de creación de una aplicación software para las prácticas de la asignatura "Ingeniería del Software".
 
-Manual de Usuario en video: https://youtu.be/eeByrv5zsxo
-App_desplegada: https://sprintcode.onrender.com/ Usuario admin: admin@uco.es Contraseña🔢
-Para correr el proyecto:
+**Manual de Usuario en video:** [https://youtu.be/eeByrv5zsxo](https://youtu.be/eeByrv5zsxo)  
+**App desplegada:** [https://sprintcode.onrender.com/](https://sprintcode.onrender.com/)  
+**Usuario admin:** `admin@uco.es`  
+**Contraseña:** 🔢
+
+</div>
+
+## Acknowledgements
+
+Este proyecto ha sido creado por:
+
+- [Darío Martínez Kostyuk](https://github.com/000Volk000)
+- [David Martínez Molina](https://github.com/darkghost078)
+- [Arturo Vicente Perez](https://github.com/ARVIPE/)
+- [Madizhan Islambek](https://github.com/zhanymsoulz)
+
 
 ## Cómo correr el proyecto
 
@@ -33,12 +46,4 @@ php artisan migrate:refresh
 php artisan db:seed
 
 
-## Acknowledgements
-
-Este proyecto ha sido creado por:
-
-- [Darío Martínez Kostyuk](https://github.com/000Volk000)
-- [David Martínez Molina](https://github.com/darkghost078)
-- [Arturo Vicente Perez](https://github.com/ARVIPE/)
-- [Madizhan Islambek](https://github.com/zhanymsoulz)
 
