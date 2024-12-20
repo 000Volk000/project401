@@ -24,13 +24,17 @@ RUN apt-get update && apt-get install -y libpq-dev nginx \
     && docker-php-ext-install pdo pdo_mysql
 
 # Set up permissions for Laravel directories
+# Create the required directories if they do not exist
+RUN mkdir -p /var/www/storage /var/www/bootstrap/cache
+
+# Set ownership and permissions for Laravel directories
 RUN chown -R www-data:www-data /var/www \
     && chmod -R 775 /var/www/storage \
     && chmod -R 775 /var/www/bootstrap/cache
 
+
 # Copy the Nginx configuration file into the container
 COPY conf/nginx/nginx-site.conf /etc/nginx/sites-available/default
-
 
 # Expose the HTTP and HTTPS ports
 EXPOSE 80 443
