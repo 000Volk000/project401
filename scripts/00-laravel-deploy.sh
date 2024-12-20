@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 echo "Running composer"
 composer global require hirak/prestissimo
-composer install --no-dev --optimize-autoloader
+composer install --optimize-autoloader
 
 echo "Setting permissions"
 sudo chown -R www-data:www-data /var/www \
