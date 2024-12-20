@@ -55,7 +55,7 @@ RUN php artisan migrate:refresh --force
 RUN php artisan db:seed --force
 
 # Expose port 8000
-#EXPOSE 8000
+EXPOSE 8000
 
 # Start PHP-FPM and Laravel
-#CMD php artisan serve --host=0.0.0.0 --port=8000
+CMD php artisan serve --host=0.0.0.0 --port=8000
