@@ -10,6 +10,28 @@ Proyecto de creación de una aplicación software para las practicas de la asign
 
 Manual de Usuario en video: https://youtu.be/eeByrv5zsxo
 App_desplegada: https://sprintcode.onrender.com/ Usuario admin: admin@uco.es Contraseña🔢
+Para correr el proyecto:
+
+## Cómo correr el proyecto
+
+Sigue los pasos a continuación para configurar y ejecutar el proyecto:
+
+```bash
+# 1. Copia el archivo de entorno
+cp .env.example .env
+
+# 2. Genera la clave de la aplicación
+php artisan key:generate
+
+# 3. Instala las dependencias del proyecto
+composer install
+
+# 4. Ejecuta las migraciones
+php artisan migrate:refresh
+
+# 5. Rellena la base de datos con datos iniciales
+php artisan db:seed
+
 
 ## Acknowledgements
 
