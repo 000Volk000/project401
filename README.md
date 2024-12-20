@@ -8,6 +8,9 @@
 
 Proyecto de creación de una aplicación software para las practicas de la asignatura "Ingeniería del Software".
 
+Manual de Usuario en video: https://youtu.be/eeByrv5zsxo
+App_desplegada: https://sprintcode.onrender.com/ Usuario admin: admin@uco.es Contraseña🔢
+
 ## Acknowledgements
 
 Este proyecto ha sido creado por:
