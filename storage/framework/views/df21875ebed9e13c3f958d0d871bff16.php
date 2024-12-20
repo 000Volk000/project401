@@ -46,10 +46,6 @@
         <?php echo csrf_field(); ?>
         <input required="" class="input" type="email" name="email" id="email" placeholder="E-mail">
         <input required="" class="input" type="password" name="password" id="password" placeholder="Contraseña">
-        <?php if(Route::has('password.request')): ?>
-            <a class="forgot-password" href="<?php echo e(route('password.request')); ?>">¿Contraseña olvidada?</a>
-        <?php endif; ?>
-        <a class="register-link" href="<?php echo e(route('register')); ?>">Registrarse</a>
         <input class="login-button" type="submit" value="Sign In">
 
     </form>
