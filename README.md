@@ -19,31 +19,59 @@ Proyecto de creación de una aplicación software para las prácticas de la asig
 
 Este proyecto ha sido creado por:
 
-- [Darío Martínez Kostyuk](https://github.com/000Volk000)
-- [David Martínez Molina](https://github.com/darkghost078)
-- [Arturo Vicente Perez](https://github.com/ARVIPE/)
-- [Madizhan Islambek](https://github.com/zhanymsoulz)
+-   [Darío Martínez Kostyuk](https://github.com/000Volk000)
+-   [David Martínez Molina](https://github.com/darkghost078)
+-   [Arturo Vicente Perez](https://github.com/ARVIPE/)
+-   [Madizhan Islambek](https://github.com/zhanymsoulz)
 
+## Dependencias
+
+-   [Composer 2.8.4](https://getcomposer.org/)
+-   [Xampp 8.2.12-0](https://www.apachefriends.org/es/index.html)
 
 ## Cómo correr el proyecto
 
 Sigue los pasos a continuación para configurar y ejecutar el proyecto:
 
 ```bash
-# 1. Copia el archivo de entorno
-cp .env.example .env
+# 1. Git clone en la carpeta htdocs de xampp
+#   -- En Windows -- C:\xampp\htdocs
+#   -- En Linux   -- /opt/lampp/htdocs/
 
-# 2. Genera la clave de la aplicación
-php artisan key:generate
+# 2. Encender Apache y MySQL en xampp
+#   -- En Windows -- Ejecutar xampp y darle a start a Apache y MySQL
+#   -- En Linux   --
+sudo /opt/lampp/lampp start
 
 # 3. Instala las dependencias del proyecto
 composer install
 
-# 4. Ejecuta las migraciones
-php artisan migrate:refresh
+# 4. Copia el archivo de entorno
+cp .env.example .env
 
-# 5. Rellena la base de datos con datos iniciales
+# 5. Genera la clave de la aplicación
+php artisan key:generate
+
+# 6. Ejecuta las migraciones
+php artisan migrate
+
+# 7. Rellena la base de datos con datos iniciales
 php artisan db:seed
 
+# 8. Corre el proyecto en local
+php artisan serve
 
+# 9. Accede al puerto en el que se esta ejecutando
+# (Normalmente http://127.0.0.1:8000)
 
+```
+
+## Preguntas frecuentes
+
+**¿Como puedo restaurar la base de datos tras modificar valores?**
+
+Usa el siguiente comando para eliminar los registros y generar otros aleatorios
+
+```bash
+php artisan migrate:fresh --seed
+```
